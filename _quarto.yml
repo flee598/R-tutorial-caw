@@ -3,16 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "R_tutorial"
+  title: "Cawthon ECR R"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - intro.qmd
+      - loops.qmd
+
 
 format:
   html:
-    theme: cosmo
+    theme: vapor
     css: styles.css
     toc: true
 

@@ -3,9 +3,7 @@ title: "Introduction to R"
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Set up
 
@@ -33,15 +31,30 @@ We will need:
     - add folders: `data`, `figures`, `scripts` ...
 
 <br/>
-```{r echo = F}
-knitr::include_graphics("./docs/assets/file_structure.png")
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![](./docs/assets/file_structure.png)
+:::
+:::
+
 <br/>
 
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 getwd()
 ```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] "E:/Dropbox/3_RandomR/R_tutorial_caw"
+```
+:::
+:::
+
 
 
 File paths and accessing files:
@@ -56,8 +69,10 @@ File paths and accessing files:
 
 Set up a script
 
-```{r}
 
+::: {.cell}
+
+```{.r .cell-code}
 # Description ----
 # here is where I will describe what this script does ...
 
@@ -92,12 +107,16 @@ Set up a script
 # save model output ...
 
 # END --------------------------------------------------------------------------
-
 ```
+:::
+
 
 
 And an example with some simple code:
-```{r eval=FALSE}
+
+::: {.cell}
+
+```{.r .cell-code}
 # Description ----
 # load socio-economic data, and look at the relationship between gdp and 
 # life expectancy.
@@ -153,8 +172,9 @@ ggsave(filename = "./figures/fig1_life_gdp.png")
 # save model output ...
 
 # END --------------------------------------------------------------------------
-
 ```
+:::
+
 
 
 
@@ -165,6 +185,7 @@ Start by installing a couple addins:
 -   `lintr` - this package provides an addin that you can use to highlight formatting issues.
 -   `styler` - provides an addin to automatically tidy code indentation.
 -   [`gapminder`](https://www.gapminder.org) - provides some socioeconomic data to play with.
+
 
 
 
