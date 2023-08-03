@@ -8,8 +8,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - intro.qmd
-      - loops.qmd
+      - href: intro.qmd
+        text: Intro
+      - href: loops.qmd
+        text: Loops
 
 
 format:

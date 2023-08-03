@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "We will need:\n\nR\nRStudio\nTidverse meta package (collection of multiple packages)"
+    "text": "An introduction to R for Cawthron ECRs. We can cover a range of topics, starting with a simple introduction to R and RStudio, and going from there…\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
   },
   {
     "objectID": "about.html",
@@ -44,15 +44,57 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "About",
+    "title": "Introduction to R",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant ot give you a quick overview of some of the basic tools to get up and running."
   },
   {
     "objectID": "loops.html",
     "href": "loops.html",
-    "title": "About",
+    "title": "Introduction to loops, *_pply and parallelisation",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Content to come …."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "An introduction to R for Cawthron ECRs. We can cover a range of topics, starting with a simple introduction to R and RStudio, and going from there…\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
+  },
+  {
+    "objectID": "intro.html#overview",
+    "href": "intro.html#overview",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant ot give you a quick overview of some of the basic tools to get up and running."
+  },
+  {
+    "objectID": "intro.html#set-up",
+    "href": "intro.html#set-up",
+    "title": "Introduction to R",
+    "section": "Set up",
+    "text": "Set up\nWe will need:\n\nR\nRStudio\nTidverse meta package (collection of multiple packages)"
+  },
+  {
+    "objectID": "intro.html#setting-up-rstudio",
+    "href": "intro.html#setting-up-rstudio",
+    "title": "Introduction to R",
+    "section": "Setting up RStudio",
+    "text": "Setting up RStudio\n\nGlobal settings\n\nOrganise panes\nDark theme\nAdd margin marker\nAdd rainbow parentheses\nShow whitespace characters\n….lots fo stuff to mess with"
+  },
+  {
+    "objectID": "intro.html#setting-up-a-project",
+    "href": "intro.html#setting-up-a-project",
+    "title": "Introduction to R",
+    "section": "Setting up a project",
+    "text": "Setting up a project\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\n\n\n\n\n\n\n\ngetwd()\n\n[1] \"E:/Dropbox/3_RandomR/R_tutorial_caw\"\n\n\nFile paths and accessing files:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\""
+  },
+  {
+    "objectID": "intro.html#gettin-started",
+    "href": "intro.html#gettin-started",
+    "title": "Introduction to R",
+    "section": "Gettin started",
+    "text": "Gettin started\nSet up a script\n\n# Description ----\n# here is where I will describe what this script does ...\n\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\n\n\n\n# Load data --------------------------------------------------------------------\n\n\n\n\n# data cleaning ----------------------------------------------------------------\n\n\n\n\n# analysis ---------------------------------------------------------------------\n\n\n\n# plot -------------------------------------------------------------------------\n\n\n\n# save outputs -----------------------------------------------------------------\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nAnd an example with some simple code:\n\n# Description ----\n# load socio-economic data, and look at the relationship between gdp and \n# life expectancy.\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n\n# Load data --------------------------------------------------------------------\n\n\n# load built-in gapminder dataset\ngap_df &lt;- gapminder::gapminder\n\n# data cleaning ----------------------------------------------------------------\n\n\n# get asia only and drop \"pop\" column\nasia_df &lt;- gap_df |&gt;\n  filter(continent == \"Asia\") |&gt;\n  filter(year == max(year)) |&gt;\n  select(-pop)\n\n\n# analysis ---------------------------------------------------------------------\n\n# run linear regression\nlife_exp_lm &lt;- lm(formula = lifeExp ~ gdpPercap, data = asia_df)\nsummary(life_exp_lm)\n\n# plot -------------------------------------------------------------------------\n\n# plot gdp vs life expectency\np1 &lt;- ggplot(data = asia_df, aes(x = log(gdpPercap),\n                                 y = lifeExp,\n                                 colour = country)) +\n  geom_point() +\n  labs(x = \"Log(GDP/capita ($))\",\n       y = \"Life expectency (yrs)\") +\n  theme_bw()\n\np1\n\n# save outputs -----------------------------------------------------------------\n\n# save figure\nggsave(filename = \"./figures/fig1_life_gdp.png\")\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nStart by installing a couple addins:\n\nlintr - this package provides an addin that you can use to highlight formatting issues.\nstyler - provides an addin to automatically tidy code indentation.\ngapminder - provides some socioeconomic data to play with."
   }
 ]
