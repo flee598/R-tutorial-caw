@@ -1,8 +1,9 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "R_tutorial_caw"
+  title: "R_tutorial"
   navbar:
     left:
       - href: index.qmd
