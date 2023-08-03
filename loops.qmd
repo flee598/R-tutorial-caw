@@ -1,5 +1,9 @@
 ---
-title: "Introduction to loops, *_pply and parallelisation"
+title: "Introduction to loops, *pply and parallelisation"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 Content to come ....
