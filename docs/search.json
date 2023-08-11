@@ -17,8 +17,8 @@
     "objectID": "index.html#set-up",
     "href": "index.html#set-up",
     "title": "Introduction to R",
-    "section": "",
-    "text": "We will need:\n\nR\nRStudio\nTidverse meta package (collection of multiple packages)"
+    "section": "Set up",
+    "text": "Set up\nBring your laptop. Stuff to install before the first session:\n\nR\nRStudio\n\nAlso, please install the tidyverse meta-package (collection of multiple packages), this can be done by running install.packages(\"tidyverse\")."
   },
   {
     "objectID": "index.html#setting-up-rstudio",
@@ -46,7 +46,7 @@
     "href": "intro.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant ot give you a quick overview of some of the basic tools to get up and running."
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant to give you a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:\n\nTidy data\nRstudio overview and setting up a project\nR fundamentals\nData wrangling using the tidyverse\n\nHelpful resources:\n\nFor a detailed introduction to R, RStudio and beyond see Intro2r and their associated resources\nFor a tidyverse approach to data science see R for Data Science"
   },
   {
     "objectID": "loops.html",
@@ -67,7 +67,7 @@
     "href": "intro.html#overview",
     "title": "Introduction to R",
     "section": "",
-    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant ot give you a quick overview of some of the basic tools to get up and running."
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant to give you a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:\n\nTidy data\nRstudio overview and setting up a project\nR fundamentals\nData wrangling using the tidyverse\n\nHelpful resources:\n\nFor a detailed introduction to R, RStudio and beyond see Intro2r and their associated resources\nFor a tidyverse approach to data science see R for Data Science"
   },
   {
     "objectID": "intro.html#set-up",
@@ -81,20 +81,118 @@
     "href": "intro.html#setting-up-rstudio",
     "title": "Introduction to R",
     "section": "Setting up RStudio",
-    "text": "Setting up RStudio\n\nGlobal settings\n\nOrganise panes\nDark theme\nAdd margin marker\nAdd rainbow parentheses\nShow whitespace characters\n….lots fo stuff to mess with"
+    "text": "Setting up RStudio\n\nGlobal settings\n\nOrganise panes\nCustom themes\nAdd margin marker\nAdd rainbow parentheses\nShow whitespace characters\n….lots fo stuff to mess with"
   },
   {
     "objectID": "intro.html#setting-up-a-project",
     "href": "intro.html#setting-up-a-project",
     "title": "Introduction to R",
     "section": "Setting up a project",
-    "text": "Setting up a project\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\n\n\n\n\n\n\n\ngetwd()\n\n[1] \"E:/Dropbox/3_RandomR/R_tutorial_caw\"\n\n\nFile paths and accessing files:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\""
+    "text": "Setting up a project\nA project is a system for organising R code, data, figures etc. so they are easy to navigate and manage.\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\n\n\n\n\n\n\n\n\nNow we can use relative file paths:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\"\n\nNot hard coded file paths:\n\n\"C:/Users/finn/OneDrive/documents/R_tutorial_caw/data/my_raw_data.csv\""
   },
   {
     "objectID": "intro.html#gettin-started",
     "href": "intro.html#gettin-started",
     "title": "Introduction to R",
     "section": "Gettin started",
-    "text": "Gettin started\nSet up a script\n\n# Description ----\n# here is where I will describe what this script does ...\n\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\n\n\n\n# Load data --------------------------------------------------------------------\n\n\n\n\n# data cleaning ----------------------------------------------------------------\n\n\n\n\n# analysis ---------------------------------------------------------------------\n\n\n\n# plot -------------------------------------------------------------------------\n\n\n\n# save outputs -----------------------------------------------------------------\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nAnd an example with some simple code:\n\n# Description ----\n# load socio-economic data, and look at the relationship between gdp and \n# life expectancy.\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n\n# Load data --------------------------------------------------------------------\n\n\n# load built-in gapminder dataset\ngap_df &lt;- gapminder::gapminder\n\n# data cleaning ----------------------------------------------------------------\n\n\n# get asia only and drop \"pop\" column\nasia_df &lt;- gap_df |&gt;\n  filter(continent == \"Asia\") |&gt;\n  filter(year == max(year)) |&gt;\n  select(-pop)\n\n\n# analysis ---------------------------------------------------------------------\n\n# run linear regression\nlife_exp_lm &lt;- lm(formula = lifeExp ~ gdpPercap, data = asia_df)\nsummary(life_exp_lm)\n\n# plot -------------------------------------------------------------------------\n\n# plot gdp vs life expectency\np1 &lt;- ggplot(data = asia_df, aes(x = log(gdpPercap),\n                                 y = lifeExp,\n                                 colour = country)) +\n  geom_point() +\n  labs(x = \"Log(GDP/capita ($))\",\n       y = \"Life expectency (yrs)\") +\n  theme_bw()\n\np1\n\n# save outputs -----------------------------------------------------------------\n\n# save figure\nggsave(filename = \"./figures/fig1_life_gdp.png\")\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nStart by installing a couple addins:\n\nlintr - this package provides an addin that you can use to highlight formatting issues.\nstyler - provides an addin to automatically tidy code indentation.\ngapminder - provides some socioeconomic data to play with."
+    "text": "Gettin started\nSet up a script\n\n# Description ----\n# here is where I will describe what this script does ...\n\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\n\n\n\n# Load data --------------------------------------------------------------------\n\n\n\n\n# data cleaning ----------------------------------------------------------------\n\n\n\n\n# analysis ---------------------------------------------------------------------\n\n\n\n# plot -------------------------------------------------------------------------\n\n\n\n# save outputs -----------------------------------------------------------------\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nAnd an example with some simple code:\n\n# Description ----\n# load socio-economic data, and look at the relationship between gdp and \n# life expectancy.\n\n# Set up -----------------------------------------------------------------------\n\n# install new packages - only do once\ninstall.packages(\"gapminder\")\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# Load data --------------------------------------------------------------------\n\n\n# load built-in gapminder dataset\ngap_df &lt;- gapminder::gapminder\n\n# data cleaning ----------------------------------------------------------------\n\n\n# get asia only and drop \"pop\" column\nasia_df &lt;- gap_df |&gt;\n  filter(continent == \"Asia\") |&gt;\n  filter(year == max(year)) |&gt;\n  select(-pop)\n\n\n# analysis ---------------------------------------------------------------------\n\n# run linear regression\nlife_exp_lm &lt;- lm(formula = lifeExp ~ gdpPercap, data = asia_df)\nsummary(life_exp_lm)\n\n# plot -------------------------------------------------------------------------\n\n# plot gdp vs life expectency\np1 &lt;- ggplot(data = asia_df, aes(x = log(gdpPercap),\n                                 y = lifeExp,\n                                 colour = country)) +\n  geom_point() +\n  labs(x = \"Log(GDP/capita ($))\",\n       y = \"Life expectency (yrs)\") +\n  theme_bw()\n\np1\n\n# save outputs -----------------------------------------------------------------\n\n# save figure\nggsave(filename = \"./figures/fig1_life_gdp.png\")\n\n\n# save model output ...\n\n# END --------------------------------------------------------------------------\n\nStart by installing a couple addins:\n\nlintr - this package provides an addin that you can use to highlight formatting issues.\nstyler - provides an addin to automatically tidy code indentation.\ngapminder - provides some socioeconomic data to play with."
+  },
+  {
+    "objectID": "bibliometric.html",
+    "href": "bibliometric.html",
+    "title": "Introduction to bibliometric and quantitative review methods",
+    "section": "",
+    "text": "Content to come …."
+  },
+  {
+    "objectID": "intro.html#tidy-data",
+    "href": "intro.html#tidy-data",
+    "title": "Introduction to R",
+    "section": "Tidy data",
+    "text": "Tidy data\nBefore getting into R it is useful to understand a little about structuring data in a way that makes it easy for R to read.\nChallenging:(\n\n\n\n\n\n\n\n\n\nChallenging in a different way:(\n\n\n\n\n\n\n\n\n\nBetter:)"
+  },
+  {
+    "objectID": "intro.html#setting-up-scripts",
+    "href": "intro.html#setting-up-scripts",
+    "title": "Introduction to R",
+    "section": "Setting up scripts",
+    "text": "Setting up scripts\n.r files are where we save our code. These files are made up of code that does stuff and comments that don’t ‘do’ anything.\nComments are notes describing what the code does. Code should be well commented (anything after a # is a comment and will not be run as code) so that others, or future you knows what you did, and why. Use comments and white space to make code easy to read.\nAdding four dashes after a comment (# Intro ----) will add the comment to the outline panel.\nAn example empty script with commented sections:\n\n# Description ----\n# here is where I will describe what this script does ...\n\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\n\n\n\n# Load data --------------------------------------------------------------------\n\n\n\n\n# data cleaning ----------------------------------------------------------------\n\n\n\n\n# analysis ---------------------------------------------------------------------\n\n\n\n# plot -------------------------------------------------------------------------\n\n\n\n# save outputs -----------------------------------------------------------------\n\n\n\n# END --------------------------------------------------------------------------\n\nAnd an example with some simple commented code:\n\n# Description ----\n# load socio-economic data, and look at the relationship between gdp and \n# life expectancy.\n\n# Set up -----------------------------------------------------------------------\n\n# install new packages - only do once\ninstall.packages(\"gapminder\")\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# Load data --------------------------------------------------------------------\n\n# load built-in gapminder dataset\ngap_df &lt;- gapminder::gapminder\n\n# inspect first 10 rows of dataset\nhead(gap_df)\n\n#check column types\nstr(gap_df)\n\n# data cleaning ----------------------------------------------------------------\n\n# get Asia only, only data for the most recent year, and drop \"pop\" column\nasia_df &lt;- gap_df |&gt;\n  filter(continent == \"Asia\") |&gt;\n  filter(year == max(year)) |&gt;\n  select(-pop)\n\n# analysis ---------------------------------------------------------------------\n\n# run linear regression\nlife_exp_lm &lt;- lm(formula = log(lifeExp) ~ gdpPercap, data = asia_df)\n\n# get summary of model results\nsummary(life_exp_lm)\n\n# plot -------------------------------------------------------------------------\n\n# plot gdp vs life expectancy\np1 &lt;- ggplot(data = asia_df, aes(x = log(gdpPercap),\n                                 y = lifeExp,\n                                 colour = country)) +\n  geom_point() +\n  labs(x = \"Log(GDP/capita ($))\",\n       y = \"Life expectency (yrs)\") +\n  theme_bw()\n\n# view plot\np1\n\n# save outputs -----------------------------------------------------------------\n\n# save figure\nggsave(filename = \"./figures/fig1_life_gdp.png\")\n\n# save model output\nsaveRDS(life_exp_lm, \"./data/gapminder_lm.rds\")\n\n# END --------------------------------------------------------------------------\n\nAnd the same script without formatting:\n\ninstall.packages(\"gapminder\")\nlibrary(tidyverse)\nlibrary(gapminder)\ngap_df &lt;- gapminder::gapminder\nhead(gap_df)\nstr(gap_df)\n\nasia_df&lt;-gap_df|&gt;filter(continent==\"Asia\")|&gt;filter(year==max(year))|&gt;select(-pop)\nlife_exp_lm&lt;-lm(formula = lifeExp~gdpPercap,data=asia_df)\nsummary(life_exp_lm)\np1 &lt;- ggplot(data=asia_df,aes(x=log(gdpPercap),y=lifeExp,colour=country))+geom_point()+labs(x=\"Log(GDP/capita ($))\",y =\"Life expectency (yrs)\")+theme_bw()\np1\n\nggsave(filename=\"./figures/fig1_life_gdp.png\")\nsaveRDS(life_exp_lm, \"./data/gapminder_lm.rds\")"
+  },
+  {
+    "objectID": "intro.html#variables",
+    "href": "intro.html#variables",
+    "title": "Introduction to R",
+    "section": "Variables",
+    "text": "Variables\nVariables are containers for storing stuff (data).\nUse concise but informative variable names. Can’t start with a number or included spaces. Common variable naming conventions include:\n\ncamel case (fishData)\nsnake_case (fish_data)\nperiods (fish.data)\n\nDon’t use names of existing functions e.g. table or df.\n\n# store the word \"Finn\" in the variable \"name\"\nname &lt;- \"Finn\"\n\n# return the variables\nname\n\n# store the number 110 in the variable \"height\"\nheight &lt;- 110\n\n# add to my height\nheight + 10\n\n# create a dataframe called letter_df\nletter_df &lt;- data.fame(let = letters[1:5],\n                       id = 1:5)\n\nletter_df"
+  },
+  {
+    "objectID": "intro.html#data-types",
+    "href": "intro.html#data-types",
+    "title": "Introduction to R",
+    "section": "Data types",
+    "text": "Data types\nThere are four common data types you will run into:\n\ncharacter - (“r”, “hello”)\ninteger - (1L, 50L, 1001L (L is used to declare the number is an integer))\nnumeric - (0.45, 10.2, -1.6)\nlogical - (TRUE or FALSE)\n\nUse the class function to confirm:\n\n# create a object x and store a character string \nx &lt;- \"hello\"\n\n# check object type\nclass(x)\n\n# overwrite x with a numeric \nx &lt;- 5.5\n\n# check object type\nclass(x)"
+  },
+  {
+    "objectID": "intro.html#rstudio-keyboard-shortcuts",
+    "href": "intro.html#rstudio-keyboard-shortcuts",
+    "title": "Introduction to R",
+    "section": "RStudio keyboard shortcuts",
+    "text": "RStudio keyboard shortcuts\nThere are many shortcuts available. A couple I use regularly:\n\ncntrl + enter - run current line/highlighted code\nF1 - help for function\ncntrl + shift + m - insert pipe operator (|&gt;) - I change it to cntrl + p\n\nSee help-&gt;keyboard shortcuts in RStudio for a full list."
+  },
+  {
+    "objectID": "intro.html#storing-data",
+    "href": "intro.html#storing-data",
+    "title": "Introduction to R",
+    "section": "Storing data",
+    "text": "Storing data\nData can be stored in quite a few different ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get second column\nmy_mx[2, ]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.fame(let = letters[1:5],\n                   id = 1:5)\n# have a look\nmy_df\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get second element in the list\nmy_list[[3]]"
+  },
+  {
+    "objectID": "intro.html#objects",
+    "href": "intro.html#objects",
+    "title": "Introduction to R",
+    "section": "Objects",
+    "text": "Objects\nObjects can be thought of as containers for storing stuff (data).\nUse concise but informative object names. Can’t start with a number or included spaces. Common object naming conventions include:\n\ncamel case (fishData)\nsnake_case (fish_data)\nperiods (fish.data)\n\nDon’t use names of existing functions e.g. table or df.\n\n# store the word \"Finn\" in the object \"name\"\nname &lt;- \"Finn\"\n\n# return the object\nname\n\n# store the number 110 in the object \"height\"\nheight &lt;- 110\n\n# add to my height\nheight + 10\n\n# create a object called letter_df\nletter_df &lt;- data.fame(let = letters[1:5],\n                       id = 1:5)\n\nletter_df"
+  },
+  {
+    "objectID": "intro.html#basic-math-operators",
+    "href": "intro.html#basic-math-operators",
+    "title": "Introduction to R",
+    "section": "Basic math operators:",
+    "text": "Basic math operators:\n\n# addition\n5 + 5\n\n# assign values to x and y\nx &lt;- 5\ny &lt;- 10\n\nx + y\n\n# square root\nsqrt(x)\n\n# minimum\nmin(x, y)\n\n# less than\nx &lt; y\n\n# equal to or greater than\nx =&gt; y\n\n# equals\nx == y\n\n# not equals\nx != y\n\n# TRUE == 1\n# FALSE == 0\nTRUE == 1\n\nTRUE &gt; FALSE"
+  },
+  {
+    "objectID": "intro.html#functions",
+    "href": "intro.html#functions",
+    "title": "Introduction to R",
+    "section": "Functions",
+    "text": "Functions\nA function is an object which contains a series of instructions (code) to perform a specific task. For example calculate the mean (mean()) or standard deviation (sd()). R Comes with many built in functions. It is also possible to create your own functions (not covered today).\nWhen using a new function for the first time check the help page to see what arguments it takes e.g.\nRun: ?mean()\nmean() takes x, an R object you want to calculate the mean of, plus has some other options, trim and na.rm which have default settings of 0 and FALSE respectively.\nAn example:\n\n# create some data\nvec &lt;- c(10, 20, 30, 5, 7)\n\n# calculate the mean\nmean(x = vec)\n\nmean(vec)\n\n# what if our data has an NA\nvec_na &lt;- c(10, 20, 30, 5, 7, NA)\n\nmean(vec_na)\n\n# set na.rm to TRUE\nmean(vec_na, na.rm = T)\n\nThere are 100’s of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive."
+  },
+  {
+    "objectID": "intro.html#packages",
+    "href": "intro.html#packages",
+    "title": "Introduction to R",
+    "section": "Packages",
+    "text": "Packages\nPackages provide additional functions (or datasets) to R. A package will normally contain a set of functions aimed at solving a particular problem.\nPackages are mainly stored on CRAN, the official R package repository, or GitHub (personal developer repos). There are a few other repos, but we won’t worry about those now.\nAnyone can create packages, if you want to host them on CRAN they must meet strict formatting conditions.\nBelow we will install the package devtools from CRAN. devtools helps with developing your own package, it also has a function that allows us to install packages from GitHub repositories.\nWe will then install CawthronColours from the Cawthron GitHub page which has some official Cawthron colour palettes.\n\n# install a new package from CRAN\ninstall.packages(\"devtools\")\n\n# try and install CawthronColours package from GitHub - doesn't work\ninstall_github(\"cawthron/CawthronColours\")\n\n# load devtools package \nlibrary(devtools)\n\n# and try again\ninstall_github(\"cawthron/CawthronColours\")\n\n# load newly downloaded package\nlibrary(CawthronColours)\n\n# get colour palette from CawthronColours package \ncaw_col &lt;- get_pal(\"caw_cat_1\")\n\n# print it\nprint_pal(caw_col)"
+  },
+  {
+    "objectID": "intro.html#importingexporting",
+    "href": "intro.html#importingexporting",
+    "title": "Introduction to R",
+    "section": "Importing/exporting",
+    "text": "Importing/exporting\nData stored in just about any format can be loaded into, and exported from R. Today we will cover a couple basic formats:\n\ncsv\nexcel\nrds\n\n\n# we will use the built in dataframe\nhead(mtcars)\n\n# saving a csv file - have a look at the help file\n?write.csv\n\n# save the mtcars dataset to our data folder\nwrite.csv(x = mtcars, file = \"./data/cars_df.csv\")\n\n\n# load csv\nmy_car_df &lt;- read.csv(\"./data/cars_df.csv\", row.names = 1)\n\n\n# For excel files, we need to use the readxl package, if you have already installed \n# tidyverse you will have readxl already.\nlibrary(readxl)\n\n# get the file path to a built in example excel file\nexample_excel &lt;- readxl_example(\"datasets.xlsx\")\n\n# have a look \nexample_excel\n\n# load the file  - will just load the first sheet\nexample_df &lt;- read_excel(example_excel)\n\n# check if there are multiple excel sheets\nexcel_sheets(example_excel)\n\n# load a specific sheet\nquake_df &lt;- read_excel(example_excel, sheet = \"quakes\")\n\nhead(quake_df)\n\n# you can also save objects using R's .rds format, these can be in any format \n# e.g. dataframe, list, shapefile etc.\n\n# save dataframe\nsaveRDS(quake_df, \"./data/cars_df.rds\")\n\n# load dataframe\nquake_rds &lt;- readRDS(\"./data/cars_df.rds\")\n\n# have a look\nhead(quake_rds)\n\nOverview:\n\nto load a csv: read.csv(\"./data/my_df.csv\")\nto save a csv: write.csv(\"./data/my_df.csv\")\nto load an excel file (first sheet): read_excel(\"./data/my_df.xlsx)\nto load an excel file (specific sheet): read_excel(\"./data/my_df.xlsx, sheet = \"sheet_name\")\nto load a rds: readRDS(\"./data/my_df.rds\")\nto save a rds: saveRDS(quake_df, \"./data/my_df.rds\")"
+  },
+  {
+    "objectID": "intro.html#exercise",
+    "href": "intro.html#exercise",
+    "title": "Introduction to R",
+    "section": "Exercise",
+    "text": "Exercise\nUsing functions, can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order\nfind the minimum, maximum and median values of my_vec"
+  },
+  {
+    "objectID": "intro.html#data-structures",
+    "href": "intro.html#data-structures",
+    "title": "Introduction to R",
+    "section": "Data structures",
+    "text": "Data structures\nData can be stored in a variety of ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get second column\nmy_mx[2, ]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.fame(let = letters[1:5],\n                   id = 1:5)\n# have a look\nmy_df\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get third element in the list\nmy_list[[3]]"
   }
 ]

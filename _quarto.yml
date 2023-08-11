@@ -12,11 +12,14 @@ website:
         text: Intro
       - href: loops.qmd
         text: Loops
-
+      - href: bibliometric.qmd
+        text: Bibliometric
 
 format:
   html:
-    theme: vapor
+    theme: 
+      dark: vapor
+      light: flatly
     css: styles.css
     toc: true
 
