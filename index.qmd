@@ -8,13 +8,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-An introduction to R for Cawthron ECRs. We can cover a range of topics, starting with a simple introduction to R and RStudio, and going from there...
+An introduction to R for Cawthron ECRs.
 
 -   Session 1: an introduction to R, RStudio and the `tidyverse`
 -   Session 2: for-loops, \*pply functions and parallelisation
 -   Session 3: bibliometric tools
-
-
 
 ## Set up
 
@@ -23,5 +21,4 @@ Bring your laptop. Stuff to install before the first session:
 -   [R](https://cran.r-project.org/bin/windows/base/)
 -   [RStudio](https://posit.co/download/rstudio-desktop/)
 
-Also, please install the [`tidyverse`](https://www.tidyverse.org) meta-package (collection of multiple packages), this can be done by running `install.packages("tidyverse")`.
-
+Also install the [`tidyverse`](https://www.tidyverse.org) meta-package (collection of multiple packages), this can be done by running `install.packages("tidyverse")`.

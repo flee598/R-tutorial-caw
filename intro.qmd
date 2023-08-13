@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # OVERVIEW
 
-Quick introduction to `R`, RStudio and the `tidyverse`. This session is only meant to give you a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:
+Quick introduction to `R`, RStudio and the `tidyverse`. This session is only meant to give a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:
 
 1.  Tidy data
 2.  Rstudio overview and setting up a project
@@ -27,17 +27,19 @@ Helpful resources:
 Before getting into `R` it is useful to understand a little about structuring data in a way that makes it easy for `R` to read.
 
 Challenging :(
+
 ```{r echo = F, fig.align = 'center'}
 knitr::include_graphics("./docs/assets/data_1.png")
 ```
 
-
 Challenging in a different way :(
+
 ```{r echo = F, fig.align = 'center'}
 knitr::include_graphics("./docs/assets/data_2.png")
 ```
 
 Better :)
+
 ```{r echo = F, fig.align = 'center'}
 knitr::include_graphics("./docs/assets/data_3.png")
 ```
@@ -47,24 +49,23 @@ knitr::include_graphics("./docs/assets/data_3.png")
 # 2 SETTING UP [RSTUDIO](https://intro2r.com/rstudio_orient.html)
 
 -   Global settings
-    -   Organise panes
-    -   Custom themes
-    -   Add margin marker
-    -   Add rainbow parentheses
-    -   Show whitespace characters
+    -   organise panes
+    -   custom themes
+    -   margin marker
+    -   rainbow parentheses
+    -   Show white space characters
     -   ....lots fo stuff to mess with
 
 ## Setting up a [project](https://intro2r.com/rsprojs.html)
+
 A project is a system for organising R code, data, figures etc. so they are easy to navigate and manage.
 
 -   File structure
     -   add folders: `data`, `figures`, `scripts` ...
 
-
 ```{r echo = F, fig.align = 'center'}
 knitr::include_graphics("./docs/assets/file_structure.png")
 ```
-
 
 Now we can use relative file paths:
 
@@ -76,8 +77,8 @@ Not hard coded file paths:
 
 -   `"C:/Users/finn/OneDrive/documents/R_tutorial_caw/data/my_raw_data.csv"`
 
-
 ## Setting up scripts
+
 `.r` files are where we save our code. These files are made up of code that does stuff and comments that don't 'do' anything.
 
 Comments are notes describing what the code does. Code should be well commented (anything after a `#` is a comment and will not be run as code) so that others, or future you knows what you did, and why. Use comments and white space to make code easy to read.
@@ -85,6 +86,7 @@ Comments are notes describing what the code does. Code should be well commented 
 Adding four dashes after a comment (`# Intro ----`) will add the comment to the outline panel.
 
 An example empty script with commented sections:
+
 ```{r}
 
 # Description ----
@@ -193,6 +195,7 @@ saveRDS(life_exp_lm, "./data/gapminder_lm.rds")
 ```
 
 And the same script without formatting:
+
 ```{r eval=FALSE}
 install.packages("gapminder")
 library(tidyverse)
@@ -211,13 +214,13 @@ ggsave(filename="./figures/fig1_life_gdp.png")
 saveRDS(life_exp_lm, "./data/gapminder_lm.rds")
 ```
 
-
 ## RStudio keyboard shortcuts
+
 There are many shortcuts available. A couple I use regularly:
 
 -   `cntrl + enter` - run current line/highlighted code
 -   `F1` - help for function
--   `cntrl + shift + m` - insert pipe operator (`|>`) - I change it to `cntrl + p`
+-   `cntrl + shift + m` - insert pipe operator (`|>`) - I change this to `cntrl + p`
 
 See `help->keyboard shortcuts` in RStudio for a full list.
 
@@ -226,6 +229,7 @@ See `help->keyboard shortcuts` in RStudio for a full list.
 # 3 R FUNDAMENTALS
 
 ## [Objects](https://intro2r.com/objects-in-r.html)
+
 Objects can be thought of as containers for storing stuff (data).
 
 Use concise but informative object names. Can't start with a number or included spaces. Common object naming conventions include:
@@ -256,8 +260,8 @@ letter_df <- data.fame(let = letters[1:5],
 letter_df
 ```
 
-
 ## [Data types](https://intro2r.com/data-types.html)
+
 There are four common data types you will run into:
 
 -   `character` - ("r", "hello")
@@ -266,6 +270,7 @@ There are four common data types you will run into:
 -   `logical` - (TRUE or FALSE)
 
 Use the class function to confirm:
+
 ```{r eval=FALSE}
 # create a object x and store a character string 
 x <- "hello"
@@ -281,10 +286,11 @@ class(x)
 ```
 
 ## [Data structures](https://intro2r.com/data-structures.html)
+
 Data can be stored in a variety of ways in `R`, most often you will work with, vectors, matrices, dataframes, and lists.
 
 -   `vector` - all values must be of the same type
--   `matrix` - all values must be of the same type 
+-   `matrix` - all values must be of the same type
 -   `dataframe` - each column can be a different type - like an excel spreadsheet
 -   `list` - each list element can be anything e.g. a list of a dataframe, a matrix and a vector
 
@@ -332,8 +338,8 @@ my_list[[1]]
 my_list[[3]]
 ```
 
-
 ## Basic math [operators](https://www.w3schools.com/r/r_operators.asp):
+
 ```{r eval=FALSE}
 
 # addition
@@ -370,17 +376,18 @@ TRUE == 1
 TRUE > FALSE
 ```
 
-
 ## [Functions](https://intro2r.com/using-functions-in-r.html)
+
 A function is an object which contains a series of instructions (code) to perform a specific task. For example calculate the mean (`mean()`) or standard deviation (`sd()`). `R` Comes with many built in functions. It is also possible to create your own functions (not covered today).
 
 When using a new function for the first time check the help page to see what arguments it takes e.g.
 
- Run: `?mean()`
- 
- `mean()` takes `x`, an R object you want to calculate the mean of, plus has some other options, `trim` and `na.rm` which have default settings of `0` and `FALSE` respectively.
+Run: `?mean()`
+
+`mean()` takes `x`, an R object you want to calculate the mean of, plus has some other options, `trim` and `na.rm` which have default settings of `0` and `FALSE` respectively.
 
 An example:
+
 ```{r, eval=F}
 # create some data
 vec <- c(10, 20, 30, 5, 7)
@@ -401,25 +408,25 @@ mean(vec_na, na.rm = T)
 
 There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive.
 
+## Exercise
 
-## Exercise 
 Using functions, can you do the following:
 
-1. create a sequence from 10 to 20 and store it in an object called `my_vec`
-2. sort `my_vec` to be in descending order 
-3. find the minimum, maximum and median values of `my_vec`
-
+1.  create a sequence from 10 to 20 and store it in an object called `my_vec`
+2.  sort `my_vec` to be in descending order
+3.  find the minimum, maximum and median values of `my_vec`
 
 ## [Packages](https://intro2r.com/packages.html)
-Packages provide additional functions (or datasets) to `R`. A package will normally contain a set of functions aimed at solving a particular problem. 
+
+Packages provide additional functions (or datasets) to `R`. A package will normally contain a set of functions aimed at solving a particular problem.
 
 Packages are mainly stored on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html), the official R package repository, or GitHub (personal developer repos). There are a few other repos, but we won't worry about those now.
 
 Anyone can create packages, if you want to host them on CRAN they must meet strict formatting conditions.
 
-Below we will install the package `devtools` from CRAN. `devtools`  helps with developing your own package, it also has a function that allows us to install packages from GitHub repositories.
+Below we will install the package `devtools` from CRAN. `devtools` helps with developing your own package, it also has a function that allows us to install packages from GitHub repositories.
 
-We will then install  [`CawthronColours`](https://github.com/cawthron/CawthronColours) from the Cawthron GitHub page which has some official Cawthron colour palettes.
+We will then install [`CawthronColours`](https://github.com/cawthron/CawthronColours) from the Cawthron GitHub page which has some official Cawthron colour palettes.
 
 ```{r eval=F}
 # install a new package from CRAN
@@ -444,8 +451,8 @@ caw_col <- get_pal("caw_cat_1")
 print_pal(caw_col)
 ```
 
-
 ## [Importing/exporting](https://intro2r.com/importing-data.html)
+
 Data stored in just about any format can be loaded into, and exported from `R`. Today we will cover a couple basic formats:
 
 -   csv
@@ -463,10 +470,8 @@ head(mtcars)
 # save the mtcars dataset to our data folder
 write.csv(x = mtcars, file = "./data/cars_df.csv")
 
-
 # load csv
 my_car_df <- read.csv("./data/cars_df.csv", row.names = 1)
-
 
 # For excel files, we need to use the readxl package, if you have already installed 
 # tidyverse you will have readxl already.
@@ -511,11 +516,24 @@ Overview:
 -   to load a rds: `readRDS("./data/my_df.rds")`
 -   to save a rds: `saveRDS(quake_df, "./data/my_df.rds")`
 
-
-
 <br>
 
 # 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
+
 The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today we are going to be using functions from the `dplyr` package.
 
+## insert workflow diagram here
 
+Main `dplyr` functions for data wrangling.
+
+## Getting help
+
+I pretty much have Google open the whole time I am using `R`. Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
+
+Finding the right answer to your peobelm is a matter of learning the write jargon to Google.
+
+Another
+
+## Exercises
+
+-   install the package xxx (contains some example data)

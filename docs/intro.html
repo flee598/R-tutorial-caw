@@ -168,7 +168,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#importingexporting" id="toc-importingexporting" class="nav-link" data-scroll-target="#importingexporting">Importing/exporting</a></li>
   </ul></li>
-  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">4 DATA WRANGLING</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">4 DATA WRANGLING</a>
+  <ul class="collapse">
+  <li><a href="#insert-workflow-diagram-here" id="toc-insert-workflow-diagram-here" class="nav-link" data-scroll-target="#insert-workflow-diagram-here">insert workflow diagram here</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -194,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level1">
 <h1>OVERVIEW</h1>
-<p>Quick introduction to <code>R</code>, RStudio and the <code>tidyverse</code>. This session is only meant to give you a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:</p>
+<p>Quick introduction to <code>R</code>, RStudio and the <code>tidyverse</code>. This session is only meant to give a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:</p>
 <ol type="1">
 <li>Tidy data</li>
 <li>Rstudio overview and setting up a project</li>
@@ -216,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./docs/assets/data_1.png" class="img-fluid figure-img"></p>
+<p><img src="./docs/assets/data_1.png" class="img-fluid figure-img" width="281"></p>
 </figure>
 </div>
 </div>
@@ -226,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./docs/assets/data_2.png" class="img-fluid figure-img"></p>
+<p><img src="./docs/assets/data_2.png" class="img-fluid figure-img" width="245"></p>
 </figure>
 </div>
 </div>
@@ -236,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./docs/assets/data_3.png" class="img-fluid figure-img"></p>
+<p><img src="./docs/assets/data_3.png" class="img-fluid figure-img" width="232"></p>
 </figure>
 </div>
 </div>
@@ -248,11 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Global settings
 <ul>
-<li>Organise panes</li>
-<li>Custom themes</li>
-<li>Add margin marker</li>
-<li>Add rainbow parentheses</li>
-<li>Show whitespace characters</li>
+<li>organise panes</li>
+<li>custom themes</li>
+<li>margin marker</li>
+<li>rainbow parentheses</li>
+<li>Show white space characters</li>
 <li>….lots fo stuff to mess with</li>
 </ul></li>
 </ul>
@@ -269,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./docs/assets/file_structure.png" class="img-fluid figure-img"></p>
+<p><img src="./docs/assets/file_structure.png" class="img-fluid figure-img" width="343"></p>
 </figure>
 </div>
 </div>
@@ -417,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>cntrl + enter</code> - run current line/highlighted code</li>
 <li><code>F1</code> - help for function</li>
-<li><code>cntrl + shift + m</code> - insert pipe operator (<code>|&gt;</code>) - I change it to <code>cntrl + p</code></li>
+<li><code>cntrl + shift + m</code> - insert pipe operator (<code>|&gt;</code>) - I change this to <code>cntrl + p</code></li>
 </ul>
 <p>See <code>help-&gt;keyboard shortcuts</code> in RStudio for a full list.</p>
 <p><br></p>
@@ -652,43 +657,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># save the mtcars dataset to our data folder</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> mtcars, <span class="at">file =</span> <span class="st">"./data/cars_df.csv"</span>)</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># load csv</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>my_car_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/cars_df.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># For excel files, we need to use the readxl package, if you have already installed </span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse you will have readxl already.</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># get the file path to a built in example excel file</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>example_excel <span class="ot">&lt;-</span> <span class="fu">readxl_example</span>(<span class="st">"datasets.xlsx"</span>)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look </span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>example_excel</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co"># load the file  - will just load the first sheet</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(example_excel)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># check if there are multiple excel sheets</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(example_excel)</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co"># load a specific sheet</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>quake_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(example_excel, <span class="at">sheet =</span> <span class="st">"quakes"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># load csv</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>my_car_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/cars_df.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># For excel files, we need to use the readxl package, if you have already installed </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse you will have readxl already.</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># get the file path to a built in example excel file</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>example_excel <span class="ot">&lt;-</span> <span class="fu">readxl_example</span>(<span class="st">"datasets.xlsx"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look </span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>example_excel</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load the file  - will just load the first sheet</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>example_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(example_excel)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># check if there are multiple excel sheets</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(example_excel)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># load a specific sheet</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>quake_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(example_excel, <span class="at">sheet =</span> <span class="st">"quakes"</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(quake_df)</span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(quake_df)</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also save objects using R's .rds format, these can be in any format </span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. dataframe, list, shapefile etc.</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co"># save dataframe</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(quake_df, <span class="st">"./data/cars_df.rds"</span>)</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co"># load dataframe</span></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>quake_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./data/cars_df.rds"</span>)</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(quake_rds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also save objects using R's .rds format, these can be in any format </span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. dataframe, list, shapefile etc.</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># save dataframe</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(quake_df, <span class="st">"./data/cars_df.rds"</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># load dataframe</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>quake_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./data/cars_df.rds"</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(quake_rds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Overview:</p>
 <ul>
@@ -705,8 +708,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-wrangling" class="level1">
 <h1>4 <a href="https://r4ds.hadley.nz/data-transform">DATA WRANGLING</a></h1>
 <p>The <a href="https://www.tidyverse.org"><code>tidyverse</code></a> is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (<code>dplyr</code>), reshaping (<code>tidyr</code>), plotting (<code>ggplot2</code>) and more. Today we are going to be using functions from the <code>dplyr</code> package.</p>
+<section id="insert-workflow-diagram-here" class="level2">
+<h2 class="anchored" data-anchor-id="insert-workflow-diagram-here">insert workflow diagram here</h2>
+<p>Main <code>dplyr</code> functions for data wrangling.</p>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
+<p>I pretty much have Google open the whole time I am using <code>R</code>. Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.</p>
+<p>Finding the right answer to your peobelm is a matter of learning the write jargon to Google.</p>
+<p>Another</p>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<ul>
+<li>install the package xxx (contains some example data)</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

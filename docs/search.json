@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "An introduction to R for Cawthron ECRs. We can cover a range of topics, starting with a simple introduction to R and RStudio, and going from there…\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
   },
   {
     "objectID": "about.html",
@@ -18,7 +18,7 @@
     "href": "index.html#set-up",
     "title": "Introduction to R",
     "section": "Set up",
-    "text": "Set up\nBring your laptop. Stuff to install before the first session:\n\nR\nRStudio\n\nAlso, please install the tidyverse meta-package (collection of multiple packages), this can be done by running install.packages(\"tidyverse\")."
+    "text": "Set up\nBring your laptop. Stuff to install before the first session:\n\nR\nRStudio\n\nAlso install the tidyverse meta-package (collection of multiple packages), this can be done by running install.packages(\"tidyverse\")."
   },
   {
     "objectID": "index.html#setting-up-rstudio",
@@ -46,7 +46,7 @@
     "href": "intro.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant to give you a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:\n\nTidy data\nRstudio overview and setting up a project\nR fundamentals\nData wrangling using the tidyverse\n\nHelpful resources:\n\nFor a detailed introduction to R, RStudio and beyond see Intro2r and their associated resources\nFor a tidyverse approach to data science see R for Data Science"
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant to give a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:\n\nTidy data\nRstudio overview and setting up a project\nR fundamentals\nData wrangling using the tidyverse\n\nHelpful resources:\n\nFor a detailed introduction to R, RStudio and beyond see Intro2r and their associated resources\nFor a tidyverse approach to data science see R for Data Science"
   },
   {
     "objectID": "loops.html",
@@ -60,7 +60,7 @@
     "href": "index.html#overview",
     "title": "Introduction to R",
     "section": "",
-    "text": "An introduction to R for Cawthron ECRs. We can cover a range of topics, starting with a simple introduction to R and RStudio, and going from there…\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools"
   },
   {
     "objectID": "intro.html#overview",
@@ -137,7 +137,7 @@
     "href": "intro.html#rstudio-keyboard-shortcuts",
     "title": "Introduction to R",
     "section": "RStudio keyboard shortcuts",
-    "text": "RStudio keyboard shortcuts\nThere are many shortcuts available. A couple I use regularly:\n\ncntrl + enter - run current line/highlighted code\nF1 - help for function\ncntrl + shift + m - insert pipe operator (|&gt;) - I change it to cntrl + p\n\nSee help-&gt;keyboard shortcuts in RStudio for a full list."
+    "text": "RStudio keyboard shortcuts\nThere are many shortcuts available. A couple I use regularly:\n\ncntrl + enter - run current line/highlighted code\nF1 - help for function\ncntrl + shift + m - insert pipe operator (|&gt;) - I change this to cntrl + p\n\nSee help-&gt;keyboard shortcuts in RStudio for a full list."
   },
   {
     "objectID": "intro.html#storing-data",
@@ -179,7 +179,7 @@
     "href": "intro.html#importingexporting",
     "title": "Introduction to R",
     "section": "Importing/exporting",
-    "text": "Importing/exporting\nData stored in just about any format can be loaded into, and exported from R. Today we will cover a couple basic formats:\n\ncsv\nexcel\nrds\n\n\n# we will use the built in dataframe\nhead(mtcars)\n\n# saving a csv file - have a look at the help file\n?write.csv\n\n# save the mtcars dataset to our data folder\nwrite.csv(x = mtcars, file = \"./data/cars_df.csv\")\n\n\n# load csv\nmy_car_df &lt;- read.csv(\"./data/cars_df.csv\", row.names = 1)\n\n\n# For excel files, we need to use the readxl package, if you have already installed \n# tidyverse you will have readxl already.\nlibrary(readxl)\n\n# get the file path to a built in example excel file\nexample_excel &lt;- readxl_example(\"datasets.xlsx\")\n\n# have a look \nexample_excel\n\n# load the file  - will just load the first sheet\nexample_df &lt;- read_excel(example_excel)\n\n# check if there are multiple excel sheets\nexcel_sheets(example_excel)\n\n# load a specific sheet\nquake_df &lt;- read_excel(example_excel, sheet = \"quakes\")\n\nhead(quake_df)\n\n# you can also save objects using R's .rds format, these can be in any format \n# e.g. dataframe, list, shapefile etc.\n\n# save dataframe\nsaveRDS(quake_df, \"./data/cars_df.rds\")\n\n# load dataframe\nquake_rds &lt;- readRDS(\"./data/cars_df.rds\")\n\n# have a look\nhead(quake_rds)\n\nOverview:\n\nto load a csv: read.csv(\"./data/my_df.csv\")\nto save a csv: write.csv(\"./data/my_df.csv\")\nto load an excel file (first sheet): read_excel(\"./data/my_df.xlsx)\nto load an excel file (specific sheet): read_excel(\"./data/my_df.xlsx, sheet = \"sheet_name\")\nto load a rds: readRDS(\"./data/my_df.rds\")\nto save a rds: saveRDS(quake_df, \"./data/my_df.rds\")"
+    "text": "Importing/exporting\nData stored in just about any format can be loaded into, and exported from R. Today we will cover a couple basic formats:\n\ncsv\nexcel\nrds\n\n\n# we will use the built in dataframe\nhead(mtcars)\n\n# saving a csv file - have a look at the help file\n?write.csv\n\n# save the mtcars dataset to our data folder\nwrite.csv(x = mtcars, file = \"./data/cars_df.csv\")\n\n# load csv\nmy_car_df &lt;- read.csv(\"./data/cars_df.csv\", row.names = 1)\n\n# For excel files, we need to use the readxl package, if you have already installed \n# tidyverse you will have readxl already.\nlibrary(readxl)\n\n# get the file path to a built in example excel file\nexample_excel &lt;- readxl_example(\"datasets.xlsx\")\n\n# have a look \nexample_excel\n\n# load the file  - will just load the first sheet\nexample_df &lt;- read_excel(example_excel)\n\n# check if there are multiple excel sheets\nexcel_sheets(example_excel)\n\n# load a specific sheet\nquake_df &lt;- read_excel(example_excel, sheet = \"quakes\")\n\nhead(quake_df)\n\n# you can also save objects using R's .rds format, these can be in any format \n# e.g. dataframe, list, shapefile etc.\n\n# save dataframe\nsaveRDS(quake_df, \"./data/cars_df.rds\")\n\n# load dataframe\nquake_rds &lt;- readRDS(\"./data/cars_df.rds\")\n\n# have a look\nhead(quake_rds)\n\nOverview:\n\nto load a csv: read.csv(\"./data/my_df.csv\")\nto save a csv: write.csv(\"./data/my_df.csv\")\nto load an excel file (first sheet): read_excel(\"./data/my_df.xlsx)\nto load an excel file (specific sheet): read_excel(\"./data/my_df.xlsx, sheet = \"sheet_name\")\nto load a rds: readRDS(\"./data/my_df.rds\")\nto save a rds: saveRDS(quake_df, \"./data/my_df.rds\")"
   },
   {
     "objectID": "intro.html#exercise",
@@ -194,5 +194,26 @@
     "title": "Introduction to R",
     "section": "Data structures",
     "text": "Data structures\nData can be stored in a variety of ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get second column\nmy_mx[2, ]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.fame(let = letters[1:5],\n                   id = 1:5)\n# have a look\nmy_df\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get third element in the list\nmy_list[[3]]"
+  },
+  {
+    "objectID": "intro.html#insert-workflow-diagram-here",
+    "href": "intro.html#insert-workflow-diagram-here",
+    "title": "Introduction to R",
+    "section": "insert workflow diagram here",
+    "text": "insert workflow diagram here\nMain dplyr functions for data wrangling."
+  },
+  {
+    "objectID": "intro.html#getting-help",
+    "href": "intro.html#getting-help",
+    "title": "Introduction to R",
+    "section": "Getting help",
+    "text": "Getting help\nI pretty much have Google open the whole time I am using R. Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your peobelm is a matter of learning the write jargon to Google.\nAnother"
+  },
+  {
+    "objectID": "intro.html#exercises",
+    "href": "intro.html#exercises",
+    "title": "Introduction to R",
+    "section": "Exercises",
+    "text": "Exercises\n\ninstall the package xxx (contains some example data)"
   }
 ]
