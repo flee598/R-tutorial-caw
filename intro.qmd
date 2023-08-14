@@ -28,21 +28,18 @@ Before getting into `R` it is useful to understand a little about structuring da
 
 Challenging :(
 
-```{r echo = F, fig.align = 'center'}
-knitr::include_graphics("./docs/assets/data_1.png")
-```
+![](docs/assets/data_1.png){width=800}
 
 Challenging in a different way :(
 
-```{r echo = F, fig.align = 'center'}
-knitr::include_graphics("./docs/assets/data_2.png")
-```
+![](docs/assets/data_2.png){width=800}
+
+
+
 
 Better :)
 
-```{r echo = F, fig.align = 'center'}
-knitr::include_graphics("./docs/assets/data_3.png")
-```
+![](docs/assets/data_3.png){width=800}
 
 <br>
 
@@ -54,7 +51,7 @@ knitr::include_graphics("./docs/assets/data_3.png")
     -   margin marker
     -   rainbow parentheses
     -   Show white space characters
-    -   ....lots fo stuff to mess with
+    -   ....lots of stuff to mess with
 
 ## Setting up a [project](https://intro2r.com/rsprojs.html)
 
@@ -63,9 +60,9 @@ A project is a system for organising R code, data, figures etc. so they are easy
 -   File structure
     -   add folders: `data`, `figures`, `scripts` ...
 
-```{r echo = F, fig.align = 'center'}
-knitr::include_graphics("./docs/assets/file_structure.png")
-```
+
+![](docs/assets/file_structure.png){width=800}
+
 
 Now we can use relative file paths:
 
@@ -406,11 +403,17 @@ mean(vec_na)
 mean(vec_na, na.rm = T)
 ```
 
-There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive.
+There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likley to use regularly:
+
+`summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`,
+`as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `rbind`, `c`,
+`floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`,
+`quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`,
+`sample`, `round`, `unique`.
 
 ## Exercise
 
-Using functions, can you do the following:
+Using the functions above can you do the following:
 
 1.  create a sequence from 10 to 20 and store it in an object called `my_vec`
 2.  sort `my_vec` to be in descending order
@@ -528,11 +531,11 @@ Main `dplyr` functions for data wrangling.
 
 ## Getting help
 
-I pretty much have Google open the whole time I am using `R`. Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
+Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
 
-Finding the right answer to your peobelm is a matter of learning the write jargon to Google.
+Finding the right answer to your problem is a matter of learning the write jargon to Google.
 
-Another
+Another option is to use a program like ChatGPT which can work surprisingly well.
 
 ## Exercises
 

@@ -88,7 +88,7 @@
     "href": "intro.html#setting-up-a-project",
     "title": "Introduction to R",
     "section": "Setting up a project",
-    "text": "Setting up a project\nA project is a system for organising R code, data, figures etc. so they are easy to navigate and manage.\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\n\n\n\n\n\n\n\n\nNow we can use relative file paths:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\"\n\nNot hard coded file paths:\n\n\"C:/Users/finn/OneDrive/documents/R_tutorial_caw/data/my_raw_data.csv\""
+    "text": "Setting up a project\nA project is a system for organising R code, data, figures etc. so they are easy to navigate and manage.\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\nNow we can use relative file paths:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\"\n\nNot hard coded file paths:\n\n\"C:/Users/finn/OneDrive/documents/R_tutorial_caw/data/my_raw_data.csv\""
   },
   {
     "objectID": "intro.html#gettin-started",
@@ -207,7 +207,7 @@
     "href": "intro.html#getting-help",
     "title": "Introduction to R",
     "section": "Getting help",
-    "text": "Getting help\nI pretty much have Google open the whole time I am using R. Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your peobelm is a matter of learning the write jargon to Google.\nAnother"
+    "text": "Getting help\nCopy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your problem is a matter of learning the write jargon to Google.\nAnother option is to use a program like ChatGPT which can work surprisingly well."
   },
   {
     "objectID": "intro.html#exercises",
