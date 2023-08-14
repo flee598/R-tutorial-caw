@@ -14,6 +14,8 @@ An introduction to R for Cawthron ECRs.
 -   Session 2: for-loops, \*pply functions and parallelisation
 -   Session 3: bibliometric tools
 
+These sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too.
+
 ## Set up
 
 Bring your laptop. Stuff to install before the first session:
