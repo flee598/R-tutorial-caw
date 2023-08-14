@@ -165,7 +165,7 @@
     "href": "intro.html#functions",
     "title": "Introduction to R",
     "section": "Functions",
-    "text": "Functions\nA function is an object which contains a series of instructions (code) to perform a specific task. For example calculate the mean (mean()) or standard deviation (sd()). R Comes with many built in functions. It is also possible to create your own functions (not covered today).\nWhen using a new function for the first time check the help page to see what arguments it takes e.g.\nRun: ?mean()\nmean() takes x, an R object you want to calculate the mean of, plus has some other options, trim and na.rm which have default settings of 0 and FALSE respectively.\nAn example:\n\n# create some data\nvec &lt;- c(10, 20, 30, 5, 7)\n\n# calculate the mean\nmean(x = vec)\n\nmean(vec)\n\n# what if our data has an NA\nvec_na &lt;- c(10, 20, 30, 5, 7, NA)\n\nmean(vec_na)\n\n# set na.rm to TRUE\nmean(vec_na, na.rm = T)\n\nThere are 100’s of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive."
+    "text": "Functions\nA function is an object which contains a series of instructions (code) to perform a specific task. For example calculate the mean (mean()) or standard deviation (sd()). R Comes with many built in functions. It is also possible to create your own functions (not covered today).\nWhen using a new function for the first time check the help page to see what arguments it takes e.g.\nRun: ?mean()\nmean() takes x, an R object you want to calculate the mean of, plus has some other options, trim and na.rm which have default settings of 0 and FALSE respectively.\nAn example:\n\n# create some data\nvec &lt;- c(10, 20, 30, 5, 7)\n\n# calculate the mean\nmean(x = vec)\n\nmean(vec)\n\n# what if our data has an NA\nvec_na &lt;- c(10, 20, 30, 5, 7, NA)\n\nmean(vec_na)\n\n# set na.rm to TRUE\nmean(vec_na, na.rm = T)\n\nThere are 100’s of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likely to use regularly:\nsummary, length, head, str, min, max, median, mean, sd, abs, as.numeric, as.integer, as.charactor, as.factor, cbind, class, rbind, c, floor, ceiling, round, is.na, na.omit, ncol, nrow, order, paste, quantile, rep, row.names, col.names, readRDS, saveRDS, seq, sort, sample, round, unique, data.frame, vector, list, matrix."
   },
   {
     "objectID": "intro.html#packages",
@@ -186,7 +186,7 @@
     "href": "intro.html#exercise",
     "title": "Introduction to R",
     "section": "Exercise",
-    "text": "Exercise\nUsing functions, can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order\nfind the minimum, maximum and median values of my_vec"
+    "text": "Exercise\nUsing the functions above can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order and save to my_vec\nsample 3 number from my_vec, with replacement, and save in a new object called my_sample\nfind the median of my_sample"
   },
   {
     "objectID": "intro.html#data-structures",

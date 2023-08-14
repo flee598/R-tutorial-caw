@@ -403,21 +403,23 @@ mean(vec_na)
 mean(vec_na, na.rm = T)
 ```
 
-There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likley to use regularly:
+There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likely to use regularly:
 
 `summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`,
-`as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `rbind`, `c`,
+`as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `class`, `rbind`, `c`,
 `floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`,
 `quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`,
-`sample`, `round`, `unique`.
+`sample`, `round`, `unique`, `data.frame`, `vector`, `list`, `matrix`.
 
 ## Exercise
 
 Using the functions above can you do the following:
 
 1.  create a sequence from 10 to 20 and store it in an object called `my_vec`
-2.  sort `my_vec` to be in descending order
-3.  find the minimum, maximum and median values of `my_vec`
+2.  sort `my_vec` to be in descending order and save to `my_vec`
+3.  sample 3 number from `my_vec`, with replacement, and save in a new object called `my_sample`
+4.  find the median of `my_sample`
+
 
 ## [Packages](https://intro2r.com/packages.html)
 
