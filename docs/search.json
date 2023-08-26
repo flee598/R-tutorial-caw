@@ -151,14 +151,14 @@
     "href": "intro.html#objects",
     "title": "Introduction to R",
     "section": "Objects",
-    "text": "Objects\nObjects can be thought of as containers for storing stuff (data).\nUse concise but informative object names. Can’t start with a number or included spaces. Common object naming conventions include:\n\ncamel case (fishData)\nsnake_case (fish_data)\nperiods (fish.data)\n\nDon’t use names of existing functions e.g. table or df.\n\n# store the word \"Finn\" in the object \"name\"\nname &lt;- \"Finn\"\n\n# return the object\nname\n\n# store the number 110 in the object \"height\"\nheight &lt;- 110\n\n# add to my height\nheight + 10\n\n# create a object called letter_df\nletter_df &lt;- data.fame(let = letters[1:5],\n                       id = 1:5)\n\nletter_df"
+    "text": "Objects\nObjects can be thought of as containers for storing stuff (data).\nUse concise but informative object names. Can’t start with a number or included spaces. Common object naming conventions include:\n\ncamel case (fishData)\nsnake_case (fish_data)\nperiods (fish.data)\n\nDon’t use names of existing functions e.g. table or df.\n\n# store the word \"Finn\" in the object \"name\"\nname &lt;- \"Finn\"\n\n# return the object\nname\n\n# store the number 110 in the object \"height\"\nheight &lt;- 110\n\n# add to my height\nheight + 10\n\n# create a object called letter_df\nletter_df &lt;- data.frame(let = letters[1:5],\n                       id = 1:5)\n\nletter_df"
   },
   {
     "objectID": "intro.html#basic-math-operators",
     "href": "intro.html#basic-math-operators",
     "title": "Introduction to R",
     "section": "Basic math operators:",
-    "text": "Basic math operators:\n\n# addition\n5 + 5\n\n# assign values to x and y\nx &lt;- 5\ny &lt;- 10\n\nx + y\n\n# square root\nsqrt(x)\n\n# minimum\nmin(x, y)\n\n# less than\nx &lt; y\n\n# equal to or greater than\nx =&gt; y\n\n# equals\nx == y\n\n# not equals\nx != y\n\n# TRUE == 1\n# FALSE == 0\nTRUE == 1\n\nTRUE &gt; FALSE"
+    "text": "Basic math operators:\n\n# addition\n5 + 5\n\n# assign values to x and y\nx &lt;- 5\ny &lt;- 10\n\nx + y\n\n# square root\nsqrt(x)\n\n# minimum\nmin(x, y)\n\n# less than\nx &lt; y\n\n# equal to or greater than\nx &gt;= y\n\n# equals\nx == y\n\n# not equals\nx != y\n\n# TRUE == 1\n# FALSE == 0\nTRUE == 1\n\nTRUE &gt; FALSE"
   },
   {
     "objectID": "intro.html#functions",
@@ -186,14 +186,14 @@
     "href": "intro.html#exercise",
     "title": "Introduction to R",
     "section": "Exercise",
-    "text": "Exercise\nUsing the functions above can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order and save to my_vec\nsample 3 number from my_vec, with replacement, and save in a new object called my_sample\nfind the median of my_sample"
+    "text": "Exercise\nUsing the functions above can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order and store in my_vec_sorted\nsample 3 number from my_vec_sorted, with replacement, and save in a new object called my_sample\nfind the median of my_sample"
   },
   {
     "objectID": "intro.html#data-structures",
     "href": "intro.html#data-structures",
     "title": "Introduction to R",
     "section": "Data structures",
-    "text": "Data structures\nData can be stored in a variety of ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get second column\nmy_mx[2, ]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.fame(let = letters[1:5],\n                   id = 1:5)\n# have a look\nmy_df\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get third element in the list\nmy_list[[3]]"
+    "text": "Data structures\nData can be stored in a variety of ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get first column\nmy_mx[ ,1]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.frame(let = letters[1:5],\n                   id = 1:5)\n\n# have a look\nmy_df\n\n# check structure\nstr(my_df)\n\n# get first column\nmy_df[, 1]\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get third element in the list\nmy_list[[3]]"
   },
   {
     "objectID": "intro.html#insert-workflow-diagram-here",
@@ -207,13 +207,20 @@
     "href": "intro.html#getting-help",
     "title": "Introduction to R",
     "section": "Getting help",
-    "text": "Getting help\nCopy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your problem is a matter of learning the write jargon to Google.\nAnother option is to use a program like ChatGPT which can work surprisingly well."
+    "text": "Getting help\nCopy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your problem is a matter of learning the right jargon to Google.\nAnother option is to use a program like ChatGPT which can work surprisingly well."
   },
   {
     "objectID": "intro.html#exercises",
     "href": "intro.html#exercises",
     "title": "Introduction to R",
     "section": "Exercises",
-    "text": "Exercises\n\ninstall the package xxx (contains some example data)"
+    "text": "Exercises\n\ninstall the package nzffdr (contains some example data)"
+  },
+  {
+    "objectID": "intro.html#dplyr",
+    "href": "intro.html#dplyr",
+    "title": "Introduction to R",
+    "section": "dplyr",
+    "text": "dplyr\ndplyr functions aimed at the “tidy” and “transform” part of the cycle. The key functions are:\n\nselect() - keep/drop columns\nfilter() - filter rows\nmutate() - create new columns based on existing columns\ngroup_by() - do calculations by grouping variables\nsummarise() - summarise datasets\narrange() - reorder datasets"
   }
 ]

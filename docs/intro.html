@@ -167,11 +167,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#importingexporting" id="toc-importingexporting" class="nav-link" data-scroll-target="#importingexporting">Importing/exporting</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
   </ul></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">4 DATA WRANGLING</a>
   <ul class="collapse">
-  <li><a href="#insert-workflow-diagram-here" id="toc-insert-workflow-diagram-here" class="nav-link" data-scroll-target="#insert-workflow-diagram-here">insert workflow diagram here</a></li>
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><code>dplyr</code></a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   </ul>
@@ -422,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>height <span class="sc">+</span> <span class="dv">10</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># create a object called letter_df</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>letter_df <span class="ot">&lt;-</span> <span class="fu">data.fame</span>(<span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>letter_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>letter_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -477,32 +477,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># get first row</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>my_mx[<span class="dv">1</span>, ]</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># get second column</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>my_mx[<span class="dv">2</span>, ]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># get first column</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>my_mx[ ,<span class="dv">1</span>]</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># get the 5th row and column</span></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>my_mx[<span class="dv">5</span>, <span class="dv">5</span>]</span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dataframe with two columns</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.fame</span>(<span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">let =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                   <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>my_df</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># get column called "let"</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>my_df<span class="sc">$</span>let</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># create a list of all of the above items</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(my_vec, my_mx, my_df)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>my_list</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># get first element in the list</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">1</span>]]</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co"># get third element in the list</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>my_df</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># check structure</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(my_df)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># get first column</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>my_df[, <span class="dv">1</span>]</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># get column called "let"</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>my_df<span class="sc">$</span>let</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># create a list of all of the above items</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(my_vec, my_mx, my_df)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>my_list</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># get first element in the list</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">1</span>]]</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co"># get third element in the list</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basic-math-operators" class="level2">
@@ -527,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y</span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># equal to or greater than</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>x <span class="sc">=&gt;</span> y</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> y</span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># equals</span></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span>
@@ -574,8 +581,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Using the functions above can you do the following:</p>
 <ol type="1">
 <li>create a sequence from 10 to 20 and store it in an object called <code>my_vec</code></li>
-<li>sort <code>my_vec</code> to be in descending order and save to <code>my_vec</code></li>
-<li>sample 3 number from <code>my_vec</code>, with replacement, and save in a new object called <code>my_sample</code></li>
+<li>sort <code>my_vec</code> to be in descending order and store in <code>my_vec_sorted</code></li>
+<li>sample 3 number from <code>my_vec_sorted</code>, with replacement, and save in a new object called <code>my_sample</code></li>
 <li>find the median of <code>my_sample</code></li>
 </ol>
 </section>
@@ -674,24 +681,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><br></p>
 </section>
-</section>
-<section id="data-wrangling" class="level1">
-<h1>4 <a href="https://r4ds.hadley.nz/data-transform">DATA WRANGLING</a></h1>
-<p>The <a href="https://www.tidyverse.org"><code>tidyverse</code></a> is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (<code>dplyr</code>), reshaping (<code>tidyr</code>), plotting (<code>ggplot2</code>) and more. Today we are going to be using functions from the <code>dplyr</code> package.</p>
-<section id="insert-workflow-diagram-here" class="level2">
-<h2 class="anchored" data-anchor-id="insert-workflow-diagram-here">insert workflow diagram here</h2>
-<p>Main <code>dplyr</code> functions for data wrangling.</p>
-</section>
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
 <p>Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.</p>
-<p>Finding the right answer to your problem is a matter of learning the write jargon to Google.</p>
+<p>Finding the right answer to your problem is a matter of learning the right jargon to Google.</p>
 <p>Another option is to use a program like ChatGPT which can work surprisingly well.</p>
+</section>
+</section>
+<section id="data-wrangling" class="level1">
+<h1>4 <a href="https://r4ds.hadley.nz/data-transform">DATA WRANGLING</a></h1>
+<p>The <a href="https://www.tidyverse.org"><code>tidyverse</code></a> is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (<code>dplyr</code>), reshaping (<code>tidyr</code>), plotting (<code>ggplot2</code>) and more. Today mainly focused on <code>dplyr</code></p>
+<p><img src="docs/assets/ds_workflow.png" class="img-fluid" width="800"></p>
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr"><code>dplyr</code></h2>
+<p><code>dplyr</code> functions aimed at the “tidy” and “transform” part of the cycle. The key functions are:</p>
+<ul>
+<li><code>select()</code> - keep/drop columns</li>
+<li><code>filter()</code> - filter rows</li>
+<li><code>mutate()</code> - create new columns based on existing columns</li>
+<li><code>group_by()</code> - do calculations by grouping variables</li>
+<li><code>summarise()</code> - summarise datasets</li>
+<li><code>arrange()</code> - reorder datasets</li>
+</ul>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <ul>
-<li>install the package xxx (contains some example data)</li>
+<li>install the package <code>nzffdr</code> (contains some example data)</li>
 </ul>
 
 

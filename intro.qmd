@@ -28,18 +28,15 @@ Before getting into `R` it is useful to understand a little about structuring da
 
 Challenging :(
 
-![](docs/assets/data_1.png){width=800}
+![](docs/assets/data_1.png){width="800"}
 
 Challenging in a different way :(
 
-![](docs/assets/data_2.png){width=800}
-
-
-
+![](docs/assets/data_2.png){width="800"}
 
 Better :)
 
-![](docs/assets/data_3.png){width=800}
+![](docs/assets/data_3.png){width="800"}
 
 <br>
 
@@ -60,9 +57,7 @@ A project is a system for organising R code, data, figures etc. so they are easy
 -   File structure
     -   add folders: `data`, `figures`, `scripts` ...
 
-
-![](docs/assets/file_structure.png){width=800}
-
+![](docs/assets/file_structure.png){width="800"}
 
 Now we can use relative file paths:
 
@@ -251,7 +246,7 @@ height <- 110
 height + 10
 
 # create a object called letter_df
-letter_df <- data.fame(let = letters[1:5],
+letter_df <- data.frame(let = letters[1:5],
                        id = 1:5)
 
 letter_df
@@ -307,17 +302,24 @@ my_mx <- matrix(1:25, nrow = 5, ncol = 5)
 # get first row
 my_mx[1, ]
 
-# get second column
-my_mx[2, ]
+# get first column
+my_mx[ ,1]
 
 # get the 5th row and column
 my_mx[5, 5]
 
 # create a dataframe with two columns
-my_df <- data.fame(let = letters[1:5],
+my_df <- data.frame(let = letters[1:5],
                    id = 1:5)
+
 # have a look
 my_df
+
+# check structure
+str(my_df)
+
+# get first column
+my_df[, 1]
 
 # get column called "let"
 my_df$let
@@ -358,7 +360,7 @@ min(x, y)
 x < y
 
 # equal to or greater than
-x => y
+x >= y
 
 # equals
 x == y
@@ -405,21 +407,16 @@ mean(vec_na, na.rm = T)
 
 There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likely to use regularly:
 
-`summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`,
-`as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `class`, `rbind`, `c`,
-`floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`,
-`quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`,
-`sample`, `round`, `unique`, `data.frame`, `vector`, `list`, `matrix`.
+`summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`, `as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `class`, `rbind`, `c`, `floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`, `quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`, `sample`, `round`, `unique`, `data.frame`, `vector`, `list`, `matrix`.
 
 ## Exercise
 
 Using the functions above can you do the following:
 
 1.  create a sequence from 10 to 20 and store it in an object called `my_vec`
-2.  sort `my_vec` to be in descending order and save to `my_vec`
-3.  sample 3 number from `my_vec`, with replacement, and save in a new object called `my_sample`
+2.  sort `my_vec` to be in descending order and store in `my_vec_sorted`
+3.  sample 3 number from `my_vec_sorted`, with replacement, and save in a new object called `my_sample`
 4.  find the median of `my_sample`
-
 
 ## [Packages](https://intro2r.com/packages.html)
 
@@ -523,22 +520,50 @@ Overview:
 
 <br>
 
-# 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
-
-The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today we are going to be using functions from the `dplyr` package.
-
-## insert workflow diagram here
-
-Main `dplyr` functions for data wrangling.
-
 ## Getting help
 
 Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
 
-Finding the right answer to your problem is a matter of learning the write jargon to Google.
+Finding the right answer to your problem is a matter of learning the right jargon to Google.
 
 Another option is to use a program like ChatGPT which can work surprisingly well.
 
+
+# 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
+
+The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today mainly focused on `dplyr`
+
+![](docs/assets/ds_workflow.png){width="800"}
+
+
+## `dplyr`
+
+`dplyr` functions aimed at the "tidy" and "transform" part of the cycle. The key functions are:
+
+-   `select()` - keep/drop columns
+-   `filter()` - filter rows
+-   `mutate()` - create new columns based on existing columns
+-   `group_by()` - do calculations by grouping variables
+-   `summarise()` - summarise datasets
+-   `arrange()` - reorder datasets
+
+
+
+```{r, eval=F}
+
+
+
+
+
+
+```
+
+
+
+
 ## Exercises
 
--   install the package xxx (contains some example data)
+-   install the package `nzffdr` (contains some example data)
+
+
+
