@@ -520,6 +520,26 @@ Overview:
 
 <br>
 
+## Pipes 
+
+Pipes ( `|>` or `%>%`) allow you to pass a dataset from one function to the next. It means you can string function calls together.
+
+```{r eval=F}
+
+# get th first 10 rows
+cars_sub <- head(mtcars, n = 10)
+
+# get the row names or cars_sub
+row.names(cars_sub)
+
+
+# get the first 10 rows and the get the row names
+mtcars |> 
+  head(n = 10) |> 
+  row.names()
+```
+
+
 ## Getting help
 
 Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
@@ -551,19 +571,104 @@ The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designe
 
 ```{r, eval=F}
 
+# load packages
+library(tidyverse)
+library(gapminder)
 
+# select -----------------------------------------------------------------------
 
+# keep
+gapminder |> 
+  select(country, continent)
 
+# drop
+gapminder |> 
+  select(-country, -continent)
 
+# keep range
+gapminder |> 
+  select(country:pop)
 
+# drop range
+gapminder |> 
+  select(!country:pop)
+
+# filter -----------------------------------------------------------------------
+
+# keep
+gapminder |> 
+  filter(continent == "Asia")
+
+# drop
+gapminder |> 
+  filter(continent != "Asia")
+
+# keep multiple
+gapminder |> 
+  filter(continent %in% c("Asia", "Europe"))
+
+# drop multiple
+gapminder |> 
+  filter(!continent %in% c("Asia", "Europe"))
+
+# kep greater than
+gapminder |> 
+  filter(year > 1980)
+
+# filter multiple conditions
+gapminder |> 
+  filter(year > 1980 & country == "Albania")
+
+# mutate -----------------------------------------------------------------------
+
+# create new variable
+gapminder |> 
+  mutate(pop_mill = pop / 1e6)
+
+# group_by ----------------------------------------------------------------------
+
+# group by one variable and create new variable
+gapminder |>
+  group_by(continent) |> 
+  mutate(max_life_exp = max(lifeExp))
+
+# group by multiple variables and create new variable
+gapminder |>
+  group_by(continent, country) |> 
+  mutate(max_life_exp = max(lifeExp))
+
+# summarise --------------------------------------------------------------------
+gapminder |>
+  summarise(max_life_exp = max(lifeExp),
+            mean_life_exp = mean(lifeExp))
+
+# arrange --------------------------------------------------------------------
+
+# arrange ascending 
+gapminder |>
+  arrange(gdpPercap)
+
+# descending 
+gapminder |>
+  arrange(-gdpPercap)
+
+# bring it all together --------------------------------------------------------
+
+gapminder |>
+  select(-lifeExp) |> 
+  group_by(continent, year) |> 
+  summarise(gdp_mean = mean(gdpPercap),
+            pop_mean = mean(pop)) |> 
+  filter(year > 1960 & year < 2000) |> 
+  filter(continent != "Americas") |> 
+  mutate(tot_earn_mill = gdp_mean * pop_mean / 1e6) |> 
+  arrange(-year, -tot_earn_mill)
 ```
-
-
 
 
 ## Exercises
 
--   install the package `nzffdr` (contains some example data)
+
 
 
 

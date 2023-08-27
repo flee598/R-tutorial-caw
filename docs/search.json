@@ -214,13 +214,20 @@
     "href": "intro.html#exercises",
     "title": "Introduction to R",
     "section": "Exercises",
-    "text": "Exercises\n\ninstall the package nzffdr (contains some example data)"
+    "text": "Exercises"
   },
   {
     "objectID": "intro.html#dplyr",
     "href": "intro.html#dplyr",
     "title": "Introduction to R",
     "section": "dplyr",
-    "text": "dplyr\ndplyr functions aimed at the “tidy” and “transform” part of the cycle. The key functions are:\n\nselect() - keep/drop columns\nfilter() - filter rows\nmutate() - create new columns based on existing columns\ngroup_by() - do calculations by grouping variables\nsummarise() - summarise datasets\narrange() - reorder datasets"
+    "text": "dplyr\ndplyr functions aimed at the “tidy” and “transform” part of the cycle. The key functions are:\n\nselect() - keep/drop columns\nfilter() - filter rows\nmutate() - create new columns based on existing columns\ngroup_by() - do calculations by grouping variables\nsummarise() - summarise datasets\narrange() - reorder datasets\n\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# select -----------------------------------------------------------------------\n\n# keep\ngapminder |&gt; \n  select(country, continent)\n\n# drop\ngapminder |&gt; \n  select(-country, -continent)\n\n# keep range\ngapminder |&gt; \n  select(country:pop)\n\n# drop range\ngapminder |&gt; \n  select(!country:pop)\n\n# filter -----------------------------------------------------------------------\n\n# keep\ngapminder |&gt; \n  filter(continent == \"Asia\")\n\n# drop\ngapminder |&gt; \n  filter(continent != \"Asia\")\n\n# keep multiple\ngapminder |&gt; \n  filter(continent %in% c(\"Asia\", \"Europe\"))\n\n# drop multiple\ngapminder |&gt; \n  filter(!continent %in% c(\"Asia\", \"Europe\"))\n\n# kep greater than\ngapminder |&gt; \n  filter(year &gt; 1980)\n\n# filter multiple conditions\ngapminder |&gt; \n  filter(year &gt; 1980 & country == \"Albania\")\n\n# mutate -----------------------------------------------------------------------\n\n# create new variable\ngapminder |&gt; \n  mutate(pop_mill = pop / 1e6)\n\n# group_by ----------------------------------------------------------------------\n\n# group by one variable and create new variable\ngapminder |&gt;\n  group_by(continent) |&gt; \n  mutate(max_life_exp = max(lifeExp))\n\n# group by multiple variables and create new variable\ngapminder |&gt;\n  group_by(continent, country) |&gt; \n  mutate(max_life_exp = max(lifeExp))\n\n# summarise --------------------------------------------------------------------\ngapminder |&gt;\n  summarise(max_life_exp = max(lifeExp),\n            mean_life_exp = mean(lifeExp))\n\n# arrange --------------------------------------------------------------------\n\n# arrange ascending \ngapminder |&gt;\n  arrange(gdpPercap)\n\n# descending \ngapminder |&gt;\n  arrange(-gdpPercap)\n\n# bring it all together --------------------------------------------------------\n\ngapminder |&gt;\n  select(-lifeExp) |&gt; \n  group_by(continent, year) |&gt; \n  summarise(gdp_mean = mean(gdpPercap),\n            pop_mean = mean(pop)) |&gt; \n  filter(year &gt; 1960 & year &lt; 2000) |&gt; \n  filter(continent != \"Americas\") |&gt; \n  mutate(tot_earn_mill = gdp_mean * pop_mean / 1e6) |&gt; \n  arrange(-year, -tot_earn_mill)"
+  },
+  {
+    "objectID": "intro.html#pipes",
+    "href": "intro.html#pipes",
+    "title": "Introduction to R",
+    "section": "Pipes",
+    "text": "Pipes\nPipes ( |&gt; or %&gt;%) allow you to pass a dataset from one function to the next. It means you can string function calls together.\n\n# get th first 10 rows\ncars_sub &lt;- head(mtcars, n = 10)\n\n# get the row names or cars_sub\nrow.names(cars_sub)\n\n\n# get the first 10 rows and the get the row names\nmtcars |&gt; \n  head(n = 10) |&gt; \n  row.names()"
   }
 ]
