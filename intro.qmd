@@ -611,7 +611,7 @@ gapminder |>
 gapminder |> 
   filter(!continent %in% c("Asia", "Europe"))
 
-# kep greater than
+# keep greater than
 gapminder |> 
   filter(year > 1980)
 
@@ -667,8 +667,81 @@ gapminder |>
 
 
 ## Exercises
+Below area few exercises to get familiar with the functions. Some of these will require some Goggling to figure out.
+
+
+```{r eval=F}
+
+
+# load data --------------------------------------------------------------------
+
+# toy nz freshwater fish data
+fish_df <- read.csv("https://raw.githubusercontent.com/flee598/R-tutorial-caw/main/data/messy_data.csv")
+
+# have a look at the data
+
+# notice anything that might meed "cleaning"?
+
+# how many rows and columns doe the dataset have (using a function!)?
+
+
+# install packages -------------------------------------------------------------
+
+# install and load the package "janitor"
+
+
+# Tidy data --------------------------------------------------------------------
+
+
+# find out what the function "clean_names()" does and use it on the fish df.
+
+
+# replace "empty" cells with NA
+
+
+# drop columns that have all NA values (use base R , or janitor or dplyr)
+
+
+# drop the columns:
+# x, institution_record_number, sampling_protocol - observation_area, data_version
+
+
+# filter out the taxon_name records with the value "Nil"
 
 
 
 
+# Transform and summarise ------------------------------------------------------
+
+
+# create a dataframe with two columns, i) taxon_name and ii) n_records,
+# where n_records is the number of records associated with each species.
+# arrange the dataframe with the species with the most records at the top 
+# hint - look at the function n().
+
+
+# on average how far are sites from the ocean?
+
+
+# what is the elevation of the highest site?
+
+
+# how many sites have a downstream barrier and how many do not?
+
+
+
+# create a new column "year" which give the year the sampling occurred.
+# hint as.Date() and format() could be helpful
+
+
+# bringing it all together
+# keep all the records that use some form of Electric-fishing - hint grepl()
+# add a new column dist_2_ocean_m
+# for each of the fishing methods calculate the mean distance to the ocean (in m)
+# arrange from nearest to furtherest
+
+
+
+
+```
 
