@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: an introduction to creating figures with ggplot2\nSession 3: for-loops, *pply functions and parallelisation\nSession 4: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
   },
   {
     "objectID": "about.html",
@@ -60,7 +60,7 @@
     "href": "index.html#overview",
     "title": "Introduction to R",
     "section": "",
-    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: for-loops, *pply functions and parallelisation\nSession 3: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: an introduction to creating figures with ggplot2\nSession 3: for-loops, *pply functions and parallelisation\nSession 4: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
   },
   {
     "objectID": "intro.html#overview",
@@ -215,5 +215,12 @@
     "title": "Introduction to R",
     "section": "Exercises",
     "text": "Exercises\n\ninstall the package xxx (contains some example data)"
+  },
+  {
+    "objectID": "ggplot.html",
+    "href": "ggplot.html",
+    "title": "ggplot",
+    "section": "",
+    "text": "OVERVIEW\nQuick introd"
   }
 ]

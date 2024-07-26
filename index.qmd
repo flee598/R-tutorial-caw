@@ -11,8 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 An introduction to R for Cawthron ECRs.
 
 -   Session 1: an introduction to R, RStudio and the `tidyverse`
--   Session 2: for-loops, \*pply functions and parallelisation
--   Session 3: bibliometric tools
+-   Session 2: an introduction to creating figures with `ggplot2`
+-   Session 3: for-loops, \*pply functions and parallelisation
+-   Session 4: bibliometric tools
 
 These sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too.
 

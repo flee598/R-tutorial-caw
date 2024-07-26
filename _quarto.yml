@@ -10,6 +10,8 @@ website:
         text: Home
       - href: intro.qmd
         text: Intro
+      - href: ggplot.qmd
+        text: Figures
       - href: loops.qmd
         text: Loops
       - href: bibliometric.qmd

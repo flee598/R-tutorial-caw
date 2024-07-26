@@ -28,18 +28,15 @@ Before getting into `R` it is useful to understand a little about structuring da
 
 Challenging :(
 
-![](docs/assets/data_1.png){width=800}
+![](docs/assets/data_1.png){width="800"}
 
 Challenging in a different way :(
 
-![](docs/assets/data_2.png){width=800}
-
-
-
+![](docs/assets/data_2.png){width="800"}
 
 Better :)
 
-![](docs/assets/data_3.png){width=800}
+![](docs/assets/data_3.png){width="800"}
 
 <br>
 
@@ -60,9 +57,7 @@ A project is a system for organising R code, data, figures etc. so they are easy
 -   File structure
     -   add folders: `data`, `figures`, `scripts` ...
 
-
-![](docs/assets/file_structure.png){width=800}
-
+![](docs/assets/file_structure.png){width="800"}
 
 Now we can use relative file paths:
 
@@ -405,11 +400,7 @@ mean(vec_na, na.rm = T)
 
 There are 100's of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likely to use regularly:
 
-`summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`,
-`as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `class`, `rbind`, `c`,
-`floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`,
-`quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`,
-`sample`, `round`, `unique`, `data.frame`, `vector`, `list`, `matrix`.
+`summary`, `length`, `head`, `str`, `min`, `max`, `median`, `mean`, `sd`, `abs`, `as.numeric`, `as.integer`, `as.charactor`, `as.factor`, `cbind`, `class`, `rbind`, `c`, `floor`, `ceiling`, `round`, `is.na`, `na.omit`, `ncol`, `nrow`, `order`, `paste`, `quantile`, `rep`, `row.names`, `col.names`, `readRDS`, `saveRDS`, `seq`, `sort`, `sample`, `round`, `unique`, `data.frame`, `vector`, `list`, `matrix`.
 
 ## Exercise
 
@@ -419,7 +410,6 @@ Using the functions above can you do the following:
 2.  sort `my_vec` to be in descending order and save to `my_vec`
 3.  sample 3 number from `my_vec`, with replacement, and save in a new object called `my_sample`
 4.  find the median of `my_sample`
-
 
 ## [Packages](https://intro2r.com/packages.html)
 
