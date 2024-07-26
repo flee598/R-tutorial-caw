@@ -246,7 +246,7 @@ height <- 110
 height + 10
 
 # create a object called letter_df
-letter_df <- data.fame(let = letters[1:5],
+letter_df <- data.frame(let = letters[1:5],
                        id = 1:5)
 
 letter_df
@@ -302,17 +302,24 @@ my_mx <- matrix(1:25, nrow = 5, ncol = 5)
 # get first row
 my_mx[1, ]
 
-# get second column
-my_mx[2, ]
+# get first column
+my_mx[ ,1]
 
 # get the 5th row and column
 my_mx[5, 5]
 
 # create a dataframe with two columns
-my_df <- data.fame(let = letters[1:5],
+my_df <- data.frame(let = letters[1:5],
                    id = 1:5)
+
 # have a look
 my_df
+
+# check structure
+str(my_df)
+
+# get first column
+my_df[, 1]
 
 # get column called "let"
 my_df$let
@@ -353,7 +360,7 @@ min(x, y)
 x < y
 
 # equal to or greater than
-x => y
+x >= y
 
 # equals
 x == y
@@ -407,8 +414,8 @@ There are 100's of functions, it will take a while to learn which functions exis
 Using the functions above can you do the following:
 
 1.  create a sequence from 10 to 20 and store it in an object called `my_vec`
-2.  sort `my_vec` to be in descending order and save to `my_vec`
-3.  sample 3 number from `my_vec`, with replacement, and save in a new object called `my_sample`
+2.  sort `my_vec` to be in descending order and store in `my_vec_sorted`
+3.  sample 3 number from `my_vec_sorted`, with replacement, and save in a new object called `my_sample`
 4.  find the median of `my_sample`
 
 ## [Packages](https://intro2r.com/packages.html)
@@ -513,22 +520,228 @@ Overview:
 
 <br>
 
-# 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
+## Pipes 
 
-The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today we are going to be using functions from the `dplyr` package.
+Pipes ( `|>` or `%>%`) allow you to pass a dataset from one function to the next. It means you can string function calls together.
 
-## insert workflow diagram here
+```{r eval=F}
 
-Main `dplyr` functions for data wrangling.
+# get th first 10 rows
+cars_sub <- head(mtcars, n = 10)
+
+# get the row names or cars_sub
+row.names(cars_sub)
+
+
+# get the first 10 rows and the get the row names
+mtcars |> 
+  head(n = 10) |> 
+  row.names()
+```
+
 
 ## Getting help
 
 Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
 
-Finding the right answer to your problem is a matter of learning the write jargon to Google.
+Finding the right answer to your problem is a matter of learning the right jargon to Google.
 
 Another option is to use a program like ChatGPT which can work surprisingly well.
 
-## Exercises
 
--   install the package xxx (contains some example data)
+# 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
+
+The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today mainly focused on `dplyr`
+
+![](docs/assets/ds_workflow.png){width="800"}
+
+
+## `dplyr`
+
+`dplyr` functions aimed at the "tidy" and "transform" part of the cycle. The key functions are:
+
+-   `select()` - keep/drop columns
+-   `filter()` - filter rows
+-   `mutate()` - create new columns based on existing columns
+-   `group_by()` - do calculations by grouping variables
+-   `summarise()` - summarise datasets
+-   `arrange()` - reorder datasets
+
+
+
+```{r, eval=F}
+
+# load packages
+library(tidyverse)
+library(gapminder)
+
+# select -----------------------------------------------------------------------
+
+# keep
+gapminder |> 
+  select(country, continent)
+
+# drop
+gapminder |> 
+  select(-country, -continent)
+
+# keep range
+gapminder |> 
+  select(country:pop)
+
+# drop range
+gapminder |> 
+  select(!country:pop)
+
+# filter -----------------------------------------------------------------------
+
+# keep
+gapminder |> 
+  filter(continent == "Asia")
+
+# drop
+gapminder |> 
+  filter(continent != "Asia")
+
+# keep multiple
+gapminder |> 
+  filter(continent %in% c("Asia", "Europe"))
+
+# drop multiple
+gapminder |> 
+  filter(!continent %in% c("Asia", "Europe"))
+
+# keep greater than
+gapminder |> 
+  filter(year > 1980)
+
+# filter multiple conditions
+gapminder |> 
+  filter(year > 1980 & country == "Albania")
+
+# mutate -----------------------------------------------------------------------
+
+# create new variable
+gapminder |> 
+  mutate(pop_mill = pop / 1e6)
+
+# group_by ----------------------------------------------------------------------
+
+# group by one variable and create new variable
+gapminder |>
+  group_by(continent) |> 
+  mutate(max_life_exp = max(lifeExp))
+
+# group by multiple variables and create new variable
+gapminder |>
+  group_by(continent, country) |> 
+  mutate(max_life_exp = max(lifeExp))
+
+# summarise --------------------------------------------------------------------
+gapminder |>
+  summarise(max_life_exp = max(lifeExp),
+            mean_life_exp = mean(lifeExp))
+
+# arrange --------------------------------------------------------------------
+
+# arrange ascending 
+gapminder |>
+  arrange(gdpPercap)
+
+# descending 
+gapminder |>
+  arrange(-gdpPercap)
+
+# bring it all together --------------------------------------------------------
+
+gapminder |>
+  select(-lifeExp) |> 
+  group_by(continent, year) |> 
+  summarise(gdp_mean = mean(gdpPercap),
+            pop_mean = mean(pop)) |> 
+  filter(year > 1960 & year < 2000) |> 
+  filter(continent != "Americas") |> 
+  mutate(tot_earn_mill = gdp_mean * pop_mean / 1e6) |> 
+  arrange(-year, -tot_earn_mill)
+```
+
+
+## Exercises
+Below area few exercises to get familiar with the functions. Some of these will require some Goggling to figure out.
+
+
+```{r eval=F}
+
+
+# load data --------------------------------------------------------------------
+
+# toy nz freshwater fish data
+fish_df <- read.csv("https://raw.githubusercontent.com/flee598/R-tutorial-caw/main/data/messy_data.csv")
+
+# have a look at the data
+
+# notice anything that might meed "cleaning"?
+
+# how many rows and columns doe the dataset have (using a function!)?
+
+
+# install packages -------------------------------------------------------------
+
+# install and load the package "janitor"
+
+
+# Tidy data --------------------------------------------------------------------
+
+
+# find out what the function "clean_names()" does and use it on the fish df.
+
+
+# replace "empty" cells with NA
+
+
+# drop columns that have all NA values (use base R , or janitor or dplyr)
+
+
+# drop the columns:
+# x, institution_record_number, sampling_protocol - observation_area, data_version
+
+
+# filter out the taxon_name records with the value "Nil"
+
+
+
+
+# Transform and summarise ------------------------------------------------------
+
+
+# create a dataframe with two columns, i) taxon_name and ii) n_records,
+# where n_records is the number of records associated with each species.
+# arrange the dataframe with the species with the most records at the top 
+# hint - look at the function n().
+
+
+# on average how far are sites from the ocean?
+
+
+# what is the elevation of the highest site?
+
+
+# how many sites have a downstream barrier and how many do not?
+
+
+
+# create a new column "year" which give the year the sampling occurred.
+# hint as.Date() and format() could be helpful
+
+
+# bringing it all together
+# keep all the records that use some form of Electric-fishing - hint grepl()
+# add a new column dist_2_ocean_m
+# for each of the fishing methods calculate the mean distance to the ocean (in m)
+# arrange from nearest to furtherest
+
+
+
+
+```
+
