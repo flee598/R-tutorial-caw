@@ -52,13 +52,13 @@ library(geodata)              # download environmental data
 
 `ggplot2` makes it simple to quickly plot data in a virtually unlimited number of ways, with huge amounts of customisation possible. There are 7 core components of a ggplot (not all are required to produce a plot).
 
-  1.  data
-  2.  mapping
-  3.  layers
-  4.  scales
-  5.  facets
-  6.  coordinates
-  7.  themes
+1.  data
+2.  mapping
+3.  layers
+4.  scales
+5.  facets
+6.  coordinates
+7.  themes
 
 ## Data
 
@@ -213,12 +213,12 @@ toy_plot +
   theme(legend.position = "bottom")
 ```
 
-
 # 2 `ggplot2` + SPATIAL DATA
 
 `ggplot2` can be used for creating maps and plotting spatial data such as point locations, polygons and rasters.Start by getting some toy spatial data.
 
 Map of NZ (polygons)
+
 ```{r}
 nz_map <- nzffdr::nzffdr_nzmap
 
@@ -228,6 +228,7 @@ nz_map <- nz_map %>%
 ```
 
 Location data of NZFFD sampling events
+
 ```{r}
 toy_df2 <- nzffdr::nzffdr_data %>%
   select(nzffdRecordNumber, eventDate, eastingNZTM, northingNZTM, taxonCommonName ) %>%
@@ -236,8 +237,8 @@ toy_df2 <- nzffdr::nzffdr_data %>%
 head(toy_df2)
 ```
 
-
 plot map with NZFFD sample locations
+
 ```{r}
 
 # plot nz outline
@@ -289,6 +290,7 @@ ggplot() +
 ```
 
 Extract just NZ and plot
+
 ```{r}
 # reproject to NZTM
 temp_nztm <- terra::project(clim_temp, terra::crs(nz_map))
@@ -317,11 +319,12 @@ ggplot() +
   theme_bw()
 ```
 
+# 3 COMBINING PLOTS
 
-## 3 COMBINING PLOTS
- Sometimes we may want to combine miultple plots, The `patchwork` package is perfect for this.
- 
+Sometimes we may want to combine miultple plots, The `patchwork` package is perfect for this.
+
 Create a few different plots
+
 ```{r}
 p1 <- ggplot() +
   geom_spatraster(data = temp_nztm)
@@ -330,17 +333,20 @@ p2 <- toy_plot +
   scale_colour_manual(values = c("firebrick",  "hotpink1"))
 ```
 
-Combine plots 
+Combine plots
+
 ```{r}
 p1 + p2
 ```
 
 Shift legends
+
 ```{r}
 p1 + p2 & theme(legend.position = 'bottom')
 ```
 
-Tag plots 
+Tag plots
+
 ```{r}
 p1 + p2 + plot_annotation(tag_levels = 'A') & theme(legend.position = 'bottom') 
 ```

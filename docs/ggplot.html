@@ -175,9 +175,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras">Extras</a></li>
   <li><a href="#bring-it-all-together" id="toc-bring-it-all-together" class="nav-link" data-scroll-target="#bring-it-all-together">Bring it all together</a></li>
   </ul></li>
-  <li><a href="#ggplot2-spatial-data" id="toc-ggplot2-spatial-data" class="nav-link" data-scroll-target="#ggplot2-spatial-data">2 <code>ggplot2</code> + SPATIAL DATA</a>
+  <li><a href="#ggplot2-spatial-data" id="toc-ggplot2-spatial-data" class="nav-link" data-scroll-target="#ggplot2-spatial-data">2 <code>ggplot2</code> + SPATIAL DATA</a></li>
+  <li><a href="#combining-plots" id="toc-combining-plots" class="nav-link" data-scroll-target="#combining-plots">3 COMBINING PLOTS</a>
   <ul class="collapse">
-  <li><a href="#combining-plots" id="toc-combining-plots" class="nav-link" data-scroll-target="#combining-plots">3 COMBINING PLOTS</a></li>
   <li><a href="#end" id="toc-end" class="nav-link" data-scroll-target="#end">END</a></li>
   </ul></li>
   </ul>
@@ -268,12 +268,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 6 × 7
    year sitecode reach  pass species                  length_1_mm weight_g
   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;
-1  2009 MACKCC-L L         2 Cutthroat trout                   76     4.59
-2  1996 MACKCC-L L         2 Coastal giant salamander         100    38.0 
-3  1987 MACKOG-M M         1 Cutthroat trout                   78     3.75
-4  1987 MACKCC-M M         1 Cutthroat trout                  148    28.9 
-5  1993 MACKCC-M M         1 Coastal giant salamander          80    18.8 
-6  2018 MACKOG-L L         1 Cutthroat trout                  122    20.7 </code></pre>
+1  2011 MACKOG-L L         1 Coastal giant salamander          58     7.51
+2  2019 MACKCC-U U         2 Coastal giant salamander          38     2.1 
+3  2012 MACKOG-L L         1 Cutthroat trout                   49     1.2 
+4  2009 MACKOG-M M         2 Cutthroat trout                  116    15.4 
+5  2009 MACKOG-U U         1 Cutthroat trout                   58     1.85
+6  2015 MACKOG-U U         1 Cutthroat trout                   49     1.12</code></pre>
 </div>
 </div>
 <p>The first step is to pass our data to <code>ggplot()</code> - this will not produce any output.</p>
@@ -621,8 +621,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="combining-plots" class="level2">
-<h2 class="anchored" data-anchor-id="combining-plots">3 COMBINING PLOTS</h2>
+</section>
+<section id="combining-plots" class="level1">
+<h1>3 COMBINING PLOTS</h1>
 <p>Sometimes we may want to combine miultple plots, The <code>patchwork</code> package is perfect for this.</p>
 <p>Create a few different plots</p>
 <div class="cell">
@@ -665,7 +666,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
 <section id="end" class="level2">
 <h2 class="anchored" data-anchor-id="end">END</h2>
 
