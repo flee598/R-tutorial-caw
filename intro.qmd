@@ -520,7 +520,7 @@ Overview:
 
 <br>
 
-## Pipes 
+## Pipes
 
 Pipes ( `|>` or `%>%`) allow you to pass a dataset from one function to the next. It means you can string function calls together.
 
@@ -539,7 +539,6 @@ mtcars |>
   row.names()
 ```
 
-
 ## Getting help
 
 Copy and paste error messages into Google. Most often the best answers will come from Stack Overflow.
@@ -548,13 +547,11 @@ Finding the right answer to your problem is a matter of learning the right jargo
 
 Another option is to use a program like ChatGPT which can work surprisingly well.
 
-
 # 4 [DATA WRANGLING](https://r4ds.hadley.nz/data-transform)
 
 The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designed to make data science workflows easier. It includes packages for data wrangling (`dplyr`), reshaping (`tidyr`), plotting (`ggplot2`) and more. Today mainly focused on `dplyr`
 
 ![](docs/assets/ds_workflow.png){width="800"}
-
 
 ## `dplyr`
 
@@ -566,8 +563,6 @@ The [`tidyverse`](https://www.tidyverse.org) is a collection of packages designe
 -   `group_by()` - do calculations by grouping variables
 -   `summarise()` - summarise datasets
 -   `arrange()` - reorder datasets
-
-
 
 ```{r, eval=F}
 
@@ -665,10 +660,9 @@ gapminder |>
   arrange(-year, -tot_earn_mill)
 ```
 
-
 ## Exercises
-Below area few exercises to get familiar with the functions. Some of these will require some Goggling to figure out.
 
+Below area few exercises to get familiar with the functions. Some of these will require some Goggling to figure out.
 
 ```{r eval=F}
 
@@ -744,4 +738,3 @@ fish_df <- read.csv("https://raw.githubusercontent.com/flee598/R-tutorial-caw/ma
 
 
 ```
-

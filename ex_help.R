@@ -1,10 +1,6 @@
 
-
-
 # First hour will be going over the basics of R and RStudio, the second hour will be 
 # a breif introduction to the tidyverse and then doing some excerses 
-
-
 
 # laod some data
 fish_df <- read.csv("https://raw.githubusercontent.com/flee598/R-tutorial-caw/main/data/messy_data.csv")
@@ -87,3 +83,74 @@ fish_df |>
   group_by(sampling_method) |> 
   summarise(dist_mean = mean(dist_2_ocean_m)) |> 
   arrange(dist_mean)
+
+
+
+
+
+library(lterdatasampler)
+library(tidyverse)
+
+# sample of trout and salamander data from US
+toy_df <- and_vertebrates %>%
+  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %>%
+  sample_n(500)
+
+
+nz_map <- nzffdr::nzffdr_nzmap
+
+
+colnames(nz_map)
+nz_map <- nz_map %>%
+  dplyr::filter(name != "Chatham Island")
+
+
+
+# get global env data raster
+clim <- geodata::worldclim_global(var = 'bio',
+                                  res = 10,
+                                  path = 'data')
+
+# pull mean temp
+clim_temp <- clim[[1]]
+
+
+# plot 
+ggplot() +
+  geom_spatraster(data = clim_temp) 
+
+
+
+extract just NZ
+
+# reproject to NZTM
+temp_nztm <- terra::project(clim_temp, terra::crs(nz_map))
+
+# crop NZ
+temp_nztm <- terra::crop(temp_nztm, nz_map, mask = T)
+
+
+# plot NZ with points
+ggplot() +
+  geom_spatraster(data = temp_nztm, ) +
+  scale_fill_viridis_c(na.value = NA) +
+  geom_point(data = toy_df2, aes(x = eastingNZTM,
+                                 y = northingNZTM)) +
+  scale_x_continuous(breaks = c(170, 180)) +
+  scale_y_continuous(breaks = c(-48, -44, -40, -36)) +
+  ggsn::scalebar(nz_map,
+                 transform = F,
+                 dist = 200,
+                 st.size = 3,
+                 dist_unit = "km",
+                 st.dist = 0.05,
+                 location = "bottomright") +
+  labs(x = "Easting",
+       y = "Northing",
+       fill = "Temp") +
+  theme_bw()
+
+
+
+
+

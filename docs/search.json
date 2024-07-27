@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "ggplot.html",
+    "href": "ggplot.html",
+    "title": "Introduction to ggplot",
+    "section": "",
+    "text": "Quick introduction to creating figures using ggplot2. This session is only meant to give a quick overview of some of the basic tools to get up and running. The session will be broken down into three main components:\n\nFundamentals of ggplot2\nggplot2 and spatial data\nCombining plots with patchwork\n\nHelpful resources:\n\nggplot2 webpage\npatchwork webpage"
+  },
+  {
+    "objectID": "ggplot.html#data",
+    "href": "ggplot.html#data",
+    "title": "Introduction to ggplot",
+    "section": "Data",
+    "text": "Data\nSelf explanatory. We need some data we want to plot. Get some toy data:\n\n# sample of trout and salamander data from US\ntoy_df &lt;- and_vertebrates %&gt;%\n  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %&gt;%\n  na.omit() %&gt;%\n  sample_n(500)\n\nhead(toy_df)\n\n# A tibble: 6 × 7\n   year sitecode reach  pass species                  length_1_mm weight_g\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;\n1  2009 MACKCC-L L         2 Cutthroat trout                   76     4.59\n2  1996 MACKCC-L L         2 Coastal giant salamander         100    38.0 \n3  1987 MACKOG-M M         1 Cutthroat trout                   78     3.75\n4  1987 MACKCC-M M         1 Cutthroat trout                  148    28.9 \n5  1993 MACKCC-M M         1 Coastal giant salamander          80    18.8 \n6  2018 MACKOG-L L         1 Cutthroat trout                  122    20.7 \n\n\nThe first step is to pass our data to ggplot() - this will not produce any output.\n\n# pass data to ggplot\nggplot(data = toy_df)"
+  },
+  {
+    "objectID": "ggplot.html#mapping",
+    "href": "ggplot.html#mapping",
+    "title": "Introduction to ggplot",
+    "section": "Mapping",
+    "text": "Mapping\nNext we want to instruct which columns within the dataset will be used fro what (e.g. explanatory and response variables, groups to colour by etc.). This is achieved via the aesthetics (aes()) function.\n\n# pass data to ggplot\nggplot(data = toy_df, mapping = aes(x = length_1_mm,\n                                    y = weight_g,\n                                    colour = species))"
+  },
+  {
+    "objectID": "ggplot.html#layers",
+    "href": "ggplot.html#layers",
+    "title": "Introduction to ggplot",
+    "section": "Layers",
+    "text": "Layers\nThis is where we say what sort of plot we want, e.g. scatter plot, bar graph etc.There are a vast array of possible options. Typically we’ll use a function starting with geom_.\n\n# create scatter plot\nggplot(data = toy_df, mapping = aes(x = length_1_mm,\n                                    y = weight_g,\n                                    colour = species)) +\n  geom_point()"
+  },
+  {
+    "objectID": "ggplot.html#scales",
+    "href": "ggplot.html#scales",
+    "title": "Introduction to ggplot",
+    "section": "Scales",
+    "text": "Scales\nScales give us finer control over aesthetics such as colour, fill, opacity, size, shape, line type. There are specific functions for each, and then depending on if you have continuous or discrete data, there are different versions of the functions.\nIn our example, we have coloured points by species, so a discrete variable. We can use scale_colour_manual() to manually alter the colours, or we can use similar functions with built-in colour palettes to automatically set colours.\n\n# create a plot\ntoy_plot &lt;- ggplot(data = toy_df, mapping = aes(x = length_1_mm,\n                                    y = weight_g,\n                                    colour = species)) +\n  geom_point() \n\n# manually select the colours\ntoy_plot +\n  scale_colour_manual(values = c(\"firebrick\",  \"hotpink1\"))\n\n\n\n\n\n\n\n# use colour brewer\ntoy_plot +\n  scale_colour_brewer(palette = \"Set1\")\n\n\n\n\n\n\n\n# use viridis\ntoy_plot +\n  scale_colour_viridis_d()\n\n\n\n\n\n\n\n\nWe could similarly alter things like point size, shape, opacity etc."
+  },
+  {
+    "objectID": "ggplot.html#facets",
+    "href": "ggplot.html#facets",
+    "title": "Introduction to ggplot",
+    "section": "Facets",
+    "text": "Facets\nFacets are used to create separate plots, based on a column in your dataset. For example, by site, year or species. We can use fact_wrap() if we want to create multiple plots based on factors in 1 column, or facet_grid() if we want to create multiple plots based on factors in 2 columns.\n\n# facet by site\ntoy_plot +\n  facet_wrap(~sitecode)\n\n\n\n\n\n\n\n\n\n# facet by site * reach \ntoy_plot +\n  facet_grid(sitecode~reach)"
+  },
+  {
+    "objectID": "ggplot.html#coordinates",
+    "href": "ggplot.html#coordinates",
+    "title": "Introduction to ggplot",
+    "section": "Coordinates",
+    "text": "Coordinates\nCan be used to fix aspect ratios. These functions are most useful when creating maps or for figures that need fixed aspect ratios such as ordinations.\n\n# fix coordinates\ntoy_plot +\n  coord_fixed()"
+  },
+  {
+    "objectID": "ggplot.html#themes",
+    "href": "ggplot.html#themes",
+    "title": "Introduction to ggplot",
+    "section": "Themes",
+    "text": "Themes\nThemes are used to customise how a plot looks. for example, background colour or grid lines, legend position, axis tick marks etc.There are built in themes, or individual aspects can be manually adjusted.\n\n# use a built in theme\ntoy_plot +\n  theme_classic()\n\n\n\n\n\n\n\n# use a built in theme + manually shift the legend\ntoy_plot +\n  theme_classic() +\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "ggplot.html#extras",
+    "href": "ggplot.html#extras",
+    "title": "Introduction to ggplot",
+    "section": "Extras",
+    "text": "Extras\nThere is much more functionality than what we have covered, for example overwriting labels and automatically fitting regression lines to plots.\n\n# add a regression line\ntoy_plot +\n  geom_smooth()\n\n\n\n\n\n\n\n# tidy labels\ntoy_plot +\n  labs(x = \"Length (mm)\",\n       y = \"Weight (g)\",\n       colour = \"Species\")\n\n\n\n\n\n\n\n\nPretty much any plot type or adjustment you can think of will be possible."
+  },
+  {
+    "objectID": "ggplot.html#bring-it-all-together",
+    "href": "ggplot.html#bring-it-all-together",
+    "title": "Introduction to ggplot",
+    "section": "Bring it all together",
+    "text": "Bring it all together\nThe power of ggplot is the ability to layer the pieces together.\n\n# combine \ntoy_plot +\n  scale_colour_manual(values = c(\"firebrick\",  \"hotpink1\")) +\n  geom_smooth() +\n  facet_grid(sitecode~reach) +\n  labs(x = \"Length (mm)\",\n       y = \"Weight (g)\",\n       colour = \"Species\") +\n  theme_bw() +\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Quick introduction to R, RStudio and the tidyverse. This session is only meant to give a quick overview of some of the basic tools to get up and running. The session will be broken down into four main components:\n\nTidy data\nRstudio overview and setting up a project\nR fundamentals\nData wrangling using the tidyverse\n\nHelpful resources:\n\nFor a detailed introduction to R, RStudio and beyond see Intro2r and their associated resources\nFor a tidyverse approach to data science see R for Data Science"
+  },
+  {
+    "objectID": "intro.html#setting-up-a-project",
+    "href": "intro.html#setting-up-a-project",
+    "title": "Introduction to R",
+    "section": "Setting up a project",
+    "text": "Setting up a project\nA project is a system for organising R code, data, figures etc. so they are easy to navigate and manage.\n\nFile structure\n\nadd folders: data, figures, scripts …\n\n\n\nNow we can use relative file paths:\n\n\"./figures/figure_1.png\"\n\"./data/my_raw_data.csv\"\n\"./scripts/my_helper_functions.r\"\n\nNot hard coded file paths:\n\n\"C:/Users/finn/OneDrive/documents/R_tutorial_caw/data/my_raw_data.csv\""
+  },
+  {
+    "objectID": "intro.html#setting-up-scripts",
+    "href": "intro.html#setting-up-scripts",
+    "title": "Introduction to R",
+    "section": "Setting up scripts",
+    "text": "Setting up scripts\n.r files are where we save our code. These files are made up of code that does stuff and comments that don’t ‘do’ anything.\nComments are notes describing what the code does. Code should be well commented (anything after a # is a comment and will not be run as code) so that others, or future you knows what you did, and why. Use comments and white space to make code easy to read.\nAdding four dashes after a comment (# Intro ----) will add the comment to the outline panel.\nAn example empty script with commented sections:\n\n# Description ----\n# here is where I will describe what this script does ...\n\n\n# Set up -----------------------------------------------------------------------\n\n# load packages\n\n\n\n# Load data --------------------------------------------------------------------\n\n\n\n\n# data cleaning ----------------------------------------------------------------\n\n\n\n\n# analysis ---------------------------------------------------------------------\n\n\n\n# plot -------------------------------------------------------------------------\n\n\n\n# save outputs -----------------------------------------------------------------\n\n\n\n# END --------------------------------------------------------------------------\n\nAnd an example with some simple commented code:\n\n# Description ----\n# load socio-economic data, and look at the relationship between gdp and \n# life expectancy.\n\n# Set up -----------------------------------------------------------------------\n\n# install new packages - only do once\ninstall.packages(\"gapminder\")\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# Load data --------------------------------------------------------------------\n\n# load built-in gapminder dataset\ngap_df &lt;- gapminder::gapminder\n\n# inspect first 10 rows of dataset\nhead(gap_df)\n\n#check column types\nstr(gap_df)\n\n# data cleaning ----------------------------------------------------------------\n\n# get Asia only, only data for the most recent year, and drop \"pop\" column\nasia_df &lt;- gap_df |&gt;\n  filter(continent == \"Asia\") |&gt;\n  filter(year == max(year)) |&gt;\n  select(-pop)\n\n# analysis ---------------------------------------------------------------------\n\n# run linear regression\nlife_exp_lm &lt;- lm(formula = log(lifeExp) ~ gdpPercap, data = asia_df)\n\n# get summary of model results\nsummary(life_exp_lm)\n\n# plot -------------------------------------------------------------------------\n\n# plot gdp vs life expectancy\np1 &lt;- ggplot(data = asia_df, aes(x = log(gdpPercap),\n                                 y = lifeExp,\n                                 colour = country)) +\n  geom_point() +\n  labs(x = \"Log(GDP/capita ($))\",\n       y = \"Life expectency (yrs)\") +\n  theme_bw()\n\n# view plot\np1\n\n# save outputs -----------------------------------------------------------------\n\n# save figure\nggsave(filename = \"./figures/fig1_life_gdp.png\")\n\n# save model output\nsaveRDS(life_exp_lm, \"./data/gapminder_lm.rds\")\n\n# END --------------------------------------------------------------------------\n\nAnd the same script without formatting:\n\ninstall.packages(\"gapminder\")\nlibrary(tidyverse)\nlibrary(gapminder)\ngap_df &lt;- gapminder::gapminder\nhead(gap_df)\nstr(gap_df)\n\nasia_df&lt;-gap_df|&gt;filter(continent==\"Asia\")|&gt;filter(year==max(year))|&gt;select(-pop)\nlife_exp_lm&lt;-lm(formula = lifeExp~gdpPercap,data=asia_df)\nsummary(life_exp_lm)\np1 &lt;- ggplot(data=asia_df,aes(x=log(gdpPercap),y=lifeExp,colour=country))+geom_point()+labs(x=\"Log(GDP/capita ($))\",y =\"Life expectency (yrs)\")+theme_bw()\np1\n\nggsave(filename=\"./figures/fig1_life_gdp.png\")\nsaveRDS(life_exp_lm, \"./data/gapminder_lm.rds\")"
+  },
+  {
+    "objectID": "intro.html#rstudio-keyboard-shortcuts",
+    "href": "intro.html#rstudio-keyboard-shortcuts",
+    "title": "Introduction to R",
+    "section": "RStudio keyboard shortcuts",
+    "text": "RStudio keyboard shortcuts\nThere are many shortcuts available. A couple I use regularly:\n\ncntrl + enter - run current line/highlighted code\nF1 - help for function\ncntrl + shift + m - insert pipe operator (|&gt;) - I change this to cntrl + p\n\nSee help-&gt;keyboard shortcuts in RStudio for a full list."
+  },
+  {
+    "objectID": "intro.html#objects",
+    "href": "intro.html#objects",
+    "title": "Introduction to R",
+    "section": "Objects",
+    "text": "Objects\nObjects can be thought of as containers for storing stuff (data).\nUse concise but informative object names. Can’t start with a number or included spaces. Common object naming conventions include:\n\ncamel case (fishData)\nsnake_case (fish_data)\nperiods (fish.data)\n\nDon’t use names of existing functions e.g. table or df.\n\n# store the word \"Finn\" in the object \"name\"\nname &lt;- \"Finn\"\n\n# return the object\nname\n\n# store the number 110 in the object \"height\"\nheight &lt;- 110\n\n# add to my height\nheight + 10\n\n# create a object called letter_df\nletter_df &lt;- data.frame(let = letters[1:5],\n                       id = 1:5)\n\nletter_df"
+  },
+  {
+    "objectID": "intro.html#data-types",
+    "href": "intro.html#data-types",
+    "title": "Introduction to R",
+    "section": "Data types",
+    "text": "Data types\nThere are four common data types you will run into:\n\ncharacter - (“r”, “hello”)\ninteger - (1L, 50L, 1001L (L is used to declare the number is an integer))\nnumeric - (0.45, 10.2, -1.6)\nlogical - (TRUE or FALSE)\n\nUse the class function to confirm:\n\n# create a object x and store a character string \nx &lt;- \"hello\"\n\n# check object type\nclass(x)\n\n# overwrite x with a numeric \nx &lt;- 5.5\n\n# check object type\nclass(x)"
+  },
+  {
+    "objectID": "intro.html#data-structures",
+    "href": "intro.html#data-structures",
+    "title": "Introduction to R",
+    "section": "Data structures",
+    "text": "Data structures\nData can be stored in a variety of ways in R, most often you will work with, vectors, matrices, dataframes, and lists.\n\nvector - all values must be of the same type\nmatrix - all values must be of the same type\ndataframe - each column can be a different type - like an excel spreadsheet\nlist - each list element can be anything e.g. a list of a dataframe, a matrix and a vector\n\n\n# create a vector\nmy_vec &lt;- c(1, 2, 3)\n\n# have a look\nmy_vec\n\n# get the second element\nmy_vec[2]\n\n# create a matrix\nmy_mx &lt;- matrix(1:25, nrow = 5, ncol = 5)\n\n# get first row\nmy_mx[1, ]\n\n# get first column\nmy_mx[ ,1]\n\n# get the 5th row and column\nmy_mx[5, 5]\n\n# create a dataframe with two columns\nmy_df &lt;- data.frame(let = letters[1:5],\n                   id = 1:5)\n\n# have a look\nmy_df\n\n# check structure\nstr(my_df)\n\n# get first column\nmy_df[, 1]\n\n# get column called \"let\"\nmy_df$let\n\n# create a list of all of the above items\nmy_list &lt;- list(my_vec, my_mx, my_df)\n\n# have a look\nmy_list\n\n# get first element in the list\nmy_list[[1]]\n\n# get third element in the list\nmy_list[[3]]"
+  },
+  {
+    "objectID": "intro.html#basic-math-operators",
+    "href": "intro.html#basic-math-operators",
+    "title": "Introduction to R",
+    "section": "Basic math operators:",
+    "text": "Basic math operators:\n\n# addition\n5 + 5\n\n# assign values to x and y\nx &lt;- 5\ny &lt;- 10\n\nx + y\n\n# square root\nsqrt(x)\n\n# minimum\nmin(x, y)\n\n# less than\nx &lt; y\n\n# equal to or greater than\nx &gt;= y\n\n# equals\nx == y\n\n# not equals\nx != y\n\n# TRUE == 1\n# FALSE == 0\nTRUE == 1\n\nTRUE &gt; FALSE"
+  },
+  {
+    "objectID": "intro.html#functions",
+    "href": "intro.html#functions",
+    "title": "Introduction to R",
+    "section": "Functions",
+    "text": "Functions\nA function is an object which contains a series of instructions (code) to perform a specific task. For example calculate the mean (mean()) or standard deviation (sd()). R Comes with many built in functions. It is also possible to create your own functions (not covered today).\nWhen using a new function for the first time check the help page to see what arguments it takes e.g.\nRun: ?mean()\nmean() takes x, an R object you want to calculate the mean of, plus has some other options, trim and na.rm which have default settings of 0 and FALSE respectively.\nAn example:\n\n# create some data\nvec &lt;- c(10, 20, 30, 5, 7)\n\n# calculate the mean\nmean(x = vec)\n\nmean(vec)\n\n# what if our data has an NA\nvec_na &lt;- c(10, 20, 30, 5, 7, NA)\n\nmean(vec_na)\n\n# set na.rm to TRUE\nmean(vec_na, na.rm = T)\n\nThere are 100’s of functions, it will take a while to learn which functions exist and what they do, but it is often pretty intuitive. Here are a few of the ones you are likely to use regularly:\nsummary, length, head, str, min, max, median, mean, sd, abs, as.numeric, as.integer, as.charactor, as.factor, cbind, class, rbind, c, floor, ceiling, round, is.na, na.omit, ncol, nrow, order, paste, quantile, rep, row.names, col.names, readRDS, saveRDS, seq, sort, sample, round, unique, data.frame, vector, list, matrix."
+  },
+  {
+    "objectID": "intro.html#exercise",
+    "href": "intro.html#exercise",
+    "title": "Introduction to R",
+    "section": "Exercise",
+    "text": "Exercise\nUsing the functions above can you do the following:\n\ncreate a sequence from 10 to 20 and store it in an object called my_vec\nsort my_vec to be in descending order and store in my_vec_sorted\nsample 3 number from my_vec_sorted, with replacement, and save in a new object called my_sample\nfind the median of my_sample"
+  },
+  {
+    "objectID": "intro.html#packages",
+    "href": "intro.html#packages",
+    "title": "Introduction to R",
+    "section": "Packages",
+    "text": "Packages\nPackages provide additional functions (or datasets) to R. A package will normally contain a set of functions aimed at solving a particular problem.\nPackages are mainly stored on CRAN, the official R package repository, or GitHub (personal developer repos). There are a few other repos, but we won’t worry about those now.\nAnyone can create packages, if you want to host them on CRAN they must meet strict formatting conditions.\nBelow we will install the package devtools from CRAN. devtools helps with developing your own package, it also has a function that allows us to install packages from GitHub repositories.\nWe will then install CawthronColours from the Cawthron GitHub page which has some official Cawthron colour palettes.\n\n# install a new package from CRAN\ninstall.packages(\"devtools\")\n\n# try and install CawthronColours package from GitHub - doesn't work\ninstall_github(\"cawthron/CawthronColours\")\n\n# load devtools package \nlibrary(devtools)\n\n# and try again\ninstall_github(\"cawthron/CawthronColours\")\n\n# load newly downloaded package\nlibrary(CawthronColours)\n\n# get colour palette from CawthronColours package \ncaw_col &lt;- get_pal(\"caw_cat_1\")\n\n# print it\nprint_pal(caw_col)"
+  },
+  {
+    "objectID": "intro.html#importingexporting",
+    "href": "intro.html#importingexporting",
+    "title": "Introduction to R",
+    "section": "Importing/exporting",
+    "text": "Importing/exporting\nData stored in just about any format can be loaded into, and exported from R. Today we will cover a couple basic formats:\n\ncsv\nexcel\nrds\n\n\n# we will use the built in dataframe\nhead(mtcars)\n\n# saving a csv file - have a look at the help file\n?write.csv\n\n# save the mtcars dataset to our data folder\nwrite.csv(x = mtcars, file = \"./data/cars_df.csv\")\n\n# load csv\nmy_car_df &lt;- read.csv(\"./data/cars_df.csv\", row.names = 1)\n\n# For excel files, we need to use the readxl package, if you have already installed \n# tidyverse you will have readxl already.\nlibrary(readxl)\n\n# get the file path to a built in example excel file\nexample_excel &lt;- readxl_example(\"datasets.xlsx\")\n\n# have a look \nexample_excel\n\n# load the file  - will just load the first sheet\nexample_df &lt;- read_excel(example_excel)\n\n# check if there are multiple excel sheets\nexcel_sheets(example_excel)\n\n# load a specific sheet\nquake_df &lt;- read_excel(example_excel, sheet = \"quakes\")\n\nhead(quake_df)\n\n# you can also save objects using R's .rds format, these can be in any format \n# e.g. dataframe, list, shapefile etc.\n\n# save dataframe\nsaveRDS(quake_df, \"./data/cars_df.rds\")\n\n# load dataframe\nquake_rds &lt;- readRDS(\"./data/cars_df.rds\")\n\n# have a look\nhead(quake_rds)\n\nOverview:\n\nto load a csv: read.csv(\"./data/my_df.csv\")\nto save a csv: write.csv(\"./data/my_df.csv\")\nto load an excel file (first sheet): read_excel(\"./data/my_df.xlsx)\nto load an excel file (specific sheet): read_excel(\"./data/my_df.xlsx, sheet = \"sheet_name\")\nto load a rds: readRDS(\"./data/my_df.rds\")\nto save a rds: saveRDS(quake_df, \"./data/my_df.rds\")"
+  },
+  {
+    "objectID": "intro.html#pipes",
+    "href": "intro.html#pipes",
+    "title": "Introduction to R",
+    "section": "Pipes",
+    "text": "Pipes\nPipes ( |&gt; or %&gt;%) allow you to pass a dataset from one function to the next. It means you can string function calls together.\n\n# get th first 10 rows\ncars_sub &lt;- head(mtcars, n = 10)\n\n# get the row names or cars_sub\nrow.names(cars_sub)\n\n\n# get the first 10 rows and the get the row names\nmtcars |&gt; \n  head(n = 10) |&gt; \n  row.names()"
+  },
+  {
+    "objectID": "intro.html#getting-help",
+    "href": "intro.html#getting-help",
+    "title": "Introduction to R",
+    "section": "Getting help",
+    "text": "Getting help\nCopy and paste error messages into Google. Most often the best answers will come from Stack Overflow.\nFinding the right answer to your problem is a matter of learning the right jargon to Google.\nAnother option is to use a program like ChatGPT which can work surprisingly well."
+  },
+  {
+    "objectID": "intro.html#dplyr",
+    "href": "intro.html#dplyr",
+    "title": "Introduction to R",
+    "section": "dplyr",
+    "text": "dplyr\ndplyr functions aimed at the “tidy” and “transform” part of the cycle. The key functions are:\n\nselect() - keep/drop columns\nfilter() - filter rows\nmutate() - create new columns based on existing columns\ngroup_by() - do calculations by grouping variables\nsummarise() - summarise datasets\narrange() - reorder datasets\n\n\n# load packages\nlibrary(tidyverse)\nlibrary(gapminder)\n\n# select -----------------------------------------------------------------------\n\n# keep\ngapminder |&gt; \n  select(country, continent)\n\n# drop\ngapminder |&gt; \n  select(-country, -continent)\n\n# keep range\ngapminder |&gt; \n  select(country:pop)\n\n# drop range\ngapminder |&gt; \n  select(!country:pop)\n\n# filter -----------------------------------------------------------------------\n\n# keep\ngapminder |&gt; \n  filter(continent == \"Asia\")\n\n# drop\ngapminder |&gt; \n  filter(continent != \"Asia\")\n\n# keep multiple\ngapminder |&gt; \n  filter(continent %in% c(\"Asia\", \"Europe\"))\n\n# drop multiple\ngapminder |&gt; \n  filter(!continent %in% c(\"Asia\", \"Europe\"))\n\n# keep greater than\ngapminder |&gt; \n  filter(year &gt; 1980)\n\n# filter multiple conditions\ngapminder |&gt; \n  filter(year &gt; 1980 & country == \"Albania\")\n\n# mutate -----------------------------------------------------------------------\n\n# create new variable\ngapminder |&gt; \n  mutate(pop_mill = pop / 1e6)\n\n# group_by ----------------------------------------------------------------------\n\n# group by one variable and create new variable\ngapminder |&gt;\n  group_by(continent) |&gt; \n  mutate(max_life_exp = max(lifeExp))\n\n# group by multiple variables and create new variable\ngapminder |&gt;\n  group_by(continent, country) |&gt; \n  mutate(max_life_exp = max(lifeExp))\n\n# summarise --------------------------------------------------------------------\ngapminder |&gt;\n  summarise(max_life_exp = max(lifeExp),\n            mean_life_exp = mean(lifeExp))\n\n# arrange --------------------------------------------------------------------\n\n# arrange ascending \ngapminder |&gt;\n  arrange(gdpPercap)\n\n# descending \ngapminder |&gt;\n  arrange(-gdpPercap)\n\n# bring it all together --------------------------------------------------------\n\ngapminder |&gt;\n  select(-lifeExp) |&gt; \n  group_by(continent, year) |&gt; \n  summarise(gdp_mean = mean(gdpPercap),\n            pop_mean = mean(pop)) |&gt; \n  filter(year &gt; 1960 & year &lt; 2000) |&gt; \n  filter(continent != \"Americas\") |&gt; \n  mutate(tot_earn_mill = gdp_mean * pop_mean / 1e6) |&gt; \n  arrange(-year, -tot_earn_mill)"
+  },
+  {
+    "objectID": "intro.html#exercises",
+    "href": "intro.html#exercises",
+    "title": "Introduction to R",
+    "section": "Exercises",
+    "text": "Exercises\nBelow area few exercises to get familiar with the functions. Some of these will require some Goggling to figure out.\n\n# load data --------------------------------------------------------------------\n\n# toy nz freshwater fish data\nfish_df &lt;- read.csv(\"https://raw.githubusercontent.com/flee598/R-tutorial-caw/main/data/messy_data.csv\")\n\n# have a look at the data\n\n# notice anything that might meed \"cleaning\"?\n\n# how many rows and columns doe the dataset have (using a function!)?\n\n\n# install packages -------------------------------------------------------------\n\n# install and load the package \"janitor\"\n\n\n# Tidy data --------------------------------------------------------------------\n\n\n# find out what the function \"clean_names()\" does and use it on the fish df.\n\n\n# replace \"empty\" cells with NA\n\n\n# drop columns that have all NA values (use base R , or janitor or dplyr)\n\n\n# drop the columns:\n# x, institution_record_number, sampling_protocol - observation_area, data_version\n\n\n# filter out the taxon_name records with the value \"Nil\"\n\n\n\n\n# Transform and summarise ------------------------------------------------------\n\n\n# create a dataframe with two columns, i) taxon_name and ii) n_records,\n# where n_records is the number of records associated with each species.\n# arrange the dataframe with the species with the most records at the top \n# hint - look at the function n().\n\n\n# on average how far are sites from the ocean?\n\n\n# what is the elevation of the highest site?\n\n\n# how many sites have a downstream barrier and how many do not?\n\n\n\n# create a new column \"year\" which give the year the sampling occurred.\n# hint as.Date() and format() could be helpful\n\n\n# bringing it all together\n# keep all the records that use some form of Electric-fishing - hint grepl()\n# add a new column dist_2_ocean_m\n# for each of the fishing methods calculate the mean distance to the ocean (in m)\n# arrange from nearest to furtherest"
+  },
+  {
+    "objectID": "ggplot.html#combining-plots",
+    "href": "ggplot.html#combining-plots",
+    "title": "Introduction to ggplot",
+    "section": "3 COMBINING PLOTS",
+    "text": "3 COMBINING PLOTS\nSometimes we may want to combine miultple plots, The patchwork package is perfect for this.\nCreate a few different plots\n\np1 &lt;- ggplot() +\n  geom_spatraster(data = temp_nztm)\n\np2 &lt;- toy_plot +\n  scale_colour_manual(values = c(\"firebrick\",  \"hotpink1\"))\n\nCombine plots\n\np1 + p2\n\n\n\n\n\n\n\n\nShift legends\n\np1 + p2 & theme(legend.position = 'bottom')\n\n\n\n\n\n\n\n\nTag plots\n\np1 + p2 + plot_annotation(tag_levels = 'A') & theme(legend.position = 'bottom')"
+  },
+  {
+    "objectID": "ggplot.html#end",
+    "href": "ggplot.html#end",
+    "title": "Introduction to ggplot",
+    "section": "END",
+    "text": "END"
+  }
+]
