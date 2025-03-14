@@ -11,7 +11,7 @@
     "href": "ggplot.html#data",
     "title": "Introduction to ggplot",
     "section": "Data",
-    "text": "Data\nSelf explanatory. We need some data we want to plot. Get some toy data:\n\n# sample of trout and salamander data from US\ntoy_df &lt;- and_vertebrates %&gt;%\n  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %&gt;%\n  na.omit() %&gt;%\n  sample_n(500)\n\nhead(toy_df)\n\n# A tibble: 6 × 7\n   year sitecode reach  pass species                  length_1_mm weight_g\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;\n1  2011 MACKOG-L L         1 Coastal giant salamander          58     7.51\n2  2019 MACKCC-U U         2 Coastal giant salamander          38     2.1 \n3  2012 MACKOG-L L         1 Cutthroat trout                   49     1.2 \n4  2009 MACKOG-M M         2 Cutthroat trout                  116    15.4 \n5  2009 MACKOG-U U         1 Cutthroat trout                   58     1.85\n6  2015 MACKOG-U U         1 Cutthroat trout                   49     1.12\n\n\nThe first step is to pass our data to ggplot() - this will not produce any output.\n\n# pass data to ggplot\nggplot(data = toy_df)"
+    "text": "Data\nSelf explanatory. We need some data we want to plot. Get some toy data:\n\n# sample of trout and salamander data from US\ntoy_df &lt;- and_vertebrates %&gt;%\n  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %&gt;%\n  na.omit() %&gt;%\n  sample_n(500)\n\nhead(toy_df)\n\n# A tibble: 6 × 7\n   year sitecode reach  pass species                  length_1_mm weight_g\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;\n1  2018 MACKOG-M M         1 Cutthroat trout                  117    15.6 \n2  1990 MACKCC-U U         2 Cutthroat trout                  171    48.8 \n3  2018 MACKCC-L L         2 Cutthroat trout                   47     1   \n4  2010 MACKCC-L L         1 Coastal giant salamander          57     7.01\n5  1996 MACKOG-L L         1 Cutthroat trout                  123    19.2 \n6  2017 MACKCC-U U         1 Cutthroat trout                   41     0.74\n\n\nThe first step is to pass our data to ggplot() - this will not produce any output.\n\n# pass data to ggplot\nggplot(data = toy_df)"
   },
   {
     "objectID": "ggplot.html#mapping",
@@ -194,5 +194,33 @@
     "title": "Introduction to ggplot",
     "section": "END",
     "text": "END"
+  },
+  {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "RStudio and GitHub",
+    "section": "",
+    "text": "OVERVIEW\nQuick introduction to connecting RStudio to GitHub."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: an introduction to creating figures with ggplot2\nSession 3: for-loops, *pply functions and parallelisation\nSession 4: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "An introduction to R for Cawthron ECRs.\n\nSession 1: an introduction to R, RStudio and the tidyverse\nSession 2: an introduction to creating figures with ggplot2\nSession 3: for-loops, *pply functions and parallelisation\nSession 4: bibliometric tools\n\nThese sessions are not based on a natural progression, rather they are the 3 top voted options. If there is a desire to have workshops that go into more depth in data wrangling, or cover other topics such as creating figures, dealing with spatial data, creating a website (like this one) etc. we can do that too."
+  },
+  {
+    "objectID": "index.html#set-up",
+    "href": "index.html#set-up",
+    "title": "Introduction to R",
+    "section": "Set up",
+    "text": "Set up\nBring your laptop. Stuff to install before the first session:\n\nR\nRStudio\n\nAlso install the tidyverse meta-package (collection of multiple packages), this can be done by running install.packages(\"tidyverse\")."
   }
 ]

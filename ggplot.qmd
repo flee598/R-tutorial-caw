@@ -31,7 +31,7 @@ Install packages
 ```{r eval=FALSE}
 install.packages(c("tidyverse", "patchwork", "terra",
                    "tidyterra", "sf", "lterdatasampler",
-                   "nzffdr", "ggsn", "geodata"))
+                   "nzffdr", "geodata"))
 ```
 
 Load packages
@@ -44,7 +44,6 @@ library(tidyterra)            # plotting raster data
 library(sf)                   # spatial data
 library(lterdatasampler)      # toy dataset
 library(nzffdr)               # toy data
-library(ggsn)                 # map scale bars
 library(geodata)              # download environmental data
 ```
 
@@ -261,19 +260,12 @@ ggplot() +
              alpha = 0.5) +
   scale_x_continuous(breaks = c(170, 180)) +
   scale_y_continuous(breaks = c(-48, -44, -40, -36)) +
-  ggsn::scalebar(nz_map,
-               transform = F,
-                 dist = 200,
-                 st.size = 3,
-                 dist_unit = "km",
-                 st.dist = 0.05,
-                 location = "bottomright") +
   labs(x = "Easting",
        y = "Northing") +
   theme_bw()
 ```
 
-We can also plot raster data in ggplot. First we download some global environemntal data, then crop in to NZ and plot.
+We can also plot raster data in ggplot. First we download some global environmental data, then crop in to NZ and plot.
 
 ```{r}
 # get global env data raster
@@ -306,13 +298,6 @@ ggplot() +
                                  y = northingNZTM)) +
   scale_x_continuous(breaks = c(170, 180)) +
   scale_y_continuous(breaks = c(-48, -44, -40, -36)) +
-  ggsn::scalebar(nz_map,
-                 transform = F,
-                 dist = 200,
-                 st.size = 3,
-                 dist_unit = "km",
-                 st.dist = 0.05,
-                 location = "bottomright") +
   labs(x = "Easting",
        y = "Northing",
        fill = "Temp") +
