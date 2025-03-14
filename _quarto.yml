@@ -12,10 +12,8 @@ website:
         text: Intro
       - href: ggplot.qmd
         text: Figures
-      - href: loops.qmd
-        text: Loops
-      - href: bibliometric.qmd
-        text: Bibliometric
+      - href: github.qmd
+        text: GitHub
 
 format:
   html:
