@@ -8,4 +8,97 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # OVERVIEW
 
-Quick introduction to connecting RStudio to GitHub.
+Quick introduction to connecting RStudio to GitHub. The session will be broken down into two main components:
+
+1.  Install and setup
+
+2.  Basics of using GitHub from RStudio
+
+Helpful resources:
+
+-   [`happygitwithr`](https://happygitwithr.com/) webpage
+
+<br>
+
+# 1 SETUP
+
+Assume you are working on a Windows machine. You will need:
+
+1.  a [`GitHub`](https://github.com/) account
+
+2.  An up to date version of [`R`](https://www.r-project.org/) and [`RStudio`](https://posit.co/download/rstudio-desktop/)
+
+3.  [`Git`](https://gitforwindows.org/) - NOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”. Otherwise accept the defaults.
+
+### Save details to Git
+
+Once you have the above sorted associate your details with Git.
+
+```{r eval=FALSE}
+library(usethis)
+library(gitcreds)
+
+usethis::use_git_config(user.name = "my name", user.email = "finn@gmail.com")
+```
+
+### Personal access token
+
+Set up credentials so we can access and alter GitHub repositories from `R`. Use the following code to take you to GitHub and generate a PAT.
+
+```{r eval=FALSE}
+usethis::create_github_token()
+```
+
+Then run the following and paste in your PAT.
+
+```{r eval=FALSE}
+gitcreds::gitcreds_set()
+```
+
+You should now be good to go.
+
+<br>
+
+# 1 GITHUB AND RSTUDIO
+
+The easiest way to get started is to create a new repo on GitHub and then clone it via HTTPS.
+
+### From GitHub
+
+Create a repo, name it something sensible, don't use spaces. Copy the HTTPS URL.
+
+![](docs/assets/github_repo_clone.png){width="800"}
+
+### From RStudio
+
+Open a new project -\> Version control -\> Git and paste in the repo URL.
+
+You should now have a local version of the repo that you can commit/push/pull etc. from.
+
+### Commits
+
+Once you have updated your repo and you are ready to "save" your work to GitHub, first you need to, from `RStudio`:
+
+1.  Click the “Git” tab at the top of `RStudio`, and select "commit"
+
+2.  Check “Staged” box for the files you have updated.
+
+3.  Type a message in “Commit message”, such as “init”.
+
+4.  Click “Commit”.
+
+Changes have now been committed to your local repo.
+
+### Push
+
+To send the changes to GitHub hit "Push". Go to your GitHub repo and confirm the updates have occurred.
+
+
+### Pull
+
+Pull is the inverse of "Push", if the repo has been updated on GitHub since your local repo was last updated, use "Pull" to "download" the updates on GitHub to your local repo. 
+
+### END
+
+
+
