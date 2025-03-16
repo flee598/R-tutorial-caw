@@ -8,9 +8,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # OVERVIEW
 
-Quick introduction to connecting RStudio to GitHub. The session will be broken down into two main components:
+Quick introduction to connecting RStudio to GitHub. The session will be broken down into two components:
 
-1.  Install and setup
+1.  Install and set up
 
 2.  Basics of using GitHub from RStudio
 
@@ -32,7 +32,7 @@ Assume you are working on a Windows machine. You will need:
 
 ### Save details to Git
 
-Once you have the above sorted associate your details with Git.
+Once you have the above sorted associate your details with Git - NOTE: you must use the email address associated with your GitHub account here.
 
 ```{r eval=FALSE}
 library(usethis)
@@ -41,9 +41,9 @@ library(gitcreds)
 usethis::use_git_config(user.name = "my name", user.email = "finn@gmail.com")
 ```
 
-### Personal access token
+### Personal Access Token (PAT)
 
-Set up credentials so we can access and alter GitHub repositories from `R`. Use the following code to take you to GitHub and generate a PAT.
+Set up credentials so we can access and alter GitHub repositories from `R`. Use the following function to take you to GitHub and generate a PAT.
 
 ```{r eval=FALSE}
 usethis::create_github_token()
@@ -59,7 +59,7 @@ You should now be good to go.
 
 <br>
 
-# 1 GITHUB AND RSTUDIO
+# 2 GITHUB AND RSTUDIO
 
 The easiest way to get started is to create a new repo on GitHub and then clone it via HTTPS.
 
@@ -93,12 +93,17 @@ Changes have now been committed to your local repo.
 
 To send the changes to GitHub hit "Push". Go to your GitHub repo and confirm the updates have occurred.
 
-
 ### Pull
 
-Pull is the inverse of "Push", if the repo has been updated on GitHub since your local repo was last updated, use "Pull" to "download" the updates on GitHub to your local repo. 
+Pull is the inverse of "Push", if the repo has been updated on GitHub since your local repo was last updated, use "Pull" to "download" the updates on GitHub to your local repo.
 
-### END
+### Reverting changes
 
+A major reason to use Git is the ability to roll back changes to previous versions.
+How to do this will depend on whether the changes you want to discard have been staged,
+committed or pushed to GitHub.
 
+See [HERE](https://intro2r.com/use_git.html#undo) for instructions on how to roll
+back a repo, for each scenario.
 
+## END

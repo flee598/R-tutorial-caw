@@ -11,7 +11,7 @@
     "href": "ggplot.html#data",
     "title": "Introduction to ggplot",
     "section": "Data",
-    "text": "Data\nSelf explanatory. We need some data we want to plot. Get some toy data:\n\n# sample of trout and salamander data from US\ntoy_df &lt;- and_vertebrates %&gt;%\n  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %&gt;%\n  na.omit() %&gt;%\n  sample_n(500)\n\nhead(toy_df)\n\n# A tibble: 6 × 7\n   year sitecode reach  pass species                  length_1_mm weight_g\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;\n1  2018 MACKOG-M M         1 Cutthroat trout                  117    15.6 \n2  1990 MACKCC-U U         2 Cutthroat trout                  171    48.8 \n3  2018 MACKCC-L L         2 Cutthroat trout                   47     1   \n4  2010 MACKCC-L L         1 Coastal giant salamander          57     7.01\n5  1996 MACKOG-L L         1 Cutthroat trout                  123    19.2 \n6  2017 MACKCC-U U         1 Cutthroat trout                   41     0.74\n\n\nThe first step is to pass our data to ggplot() - this will not produce any output.\n\n# pass data to ggplot\nggplot(data = toy_df)"
+    "text": "Data\nSelf explanatory. We need some data we want to plot. Get some toy data:\n\n# sample of trout and salamander data from US\ntoy_df &lt;- and_vertebrates %&gt;%\n  select(year, sitecode, reach, pass, species,length_1_mm, weight_g) %&gt;%\n  na.omit() %&gt;%\n  sample_n(500)\n\nhead(toy_df)\n\n# A tibble: 6 × 7\n   year sitecode reach  pass species                  length_1_mm weight_g\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;    &lt;dbl&gt;\n1  1992 MACKOG-L L         1 Cutthroat trout                  116     12.5\n2  2010 MACKCC-L L         1 Coastal giant salamander         114     43.5\n3  2018 MACKOG-M M         1 Coastal giant salamander          54      5.8\n4  1996 MACKOG-L L         1 Cutthroat trout                  145     29.6\n5  2008 MACKOG-U U         1 Cutthroat trout                   50      1.2\n6  1995 MACKOG-U U         1 Cutthroat trout                  111     13.9\n\n\nThe first step is to pass our data to ggplot() - this will not produce any output.\n\n# pass data to ggplot\nggplot(data = toy_df)"
   },
   {
     "objectID": "ggplot.html#mapping",
@@ -200,7 +200,7 @@
     "href": "github.html",
     "title": "RStudio and GitHub",
     "section": "",
-    "text": "OVERVIEW\nQuick introduction to connecting RStudio to GitHub. The session will be broken down into two main components:\n\nInstall and setup\nBasics of using GitHub from RStudio\n\nHelpful resources:\n\nhappygitwithr webpage\n\n\n\n\n1 SETUP\nAssume you are working on a Windows machine. You will need:\n\na GitHub account\nAn up to date version of R and RStudio\nGit - NOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”. Otherwise accept the defaults.\n\n\nSave details to Git\nOnce you have the above sorted associate your details with Git.\n\nlibrary(usethis)\nlibrary(gitcreds)\n\nusethis::use_git_config(user.name = \"my name\", user.email = \"finn@gmail.com\")\n\n\n\nPersonal access token\nSet up credentials so we can access and alter GitHub repositories from R. Use the following code to take you to GitHub and generate a PAT.\n\nusethis::create_github_token()\n\nThen run the following and paste in your PAT.\n\ngitcreds::gitcreds_set()\n\nYou should now be good to go.\n\n\n\n\n1 GITHUB AND RSTUDIO\nThe easiest way to get started is to create a new repo on GitHub and then clone it via HTTPS.\n\nFrom GitHub\nCreate a repo, name it something sensible, don’t use spaces. Copy the HTTPS URL.\n\n\n\nFrom RStudio\nOpen a new project -&gt; Version control -&gt; Git and paste in the repo URL.\nYou should now have a local version of the repo that you can commit/push/pull etc. from.\n\n\nCommits\nOnce you have updated your repo and you are ready to “save” your work to GitHub, first you need to, from RStudio:\n\nClick the “Git” tab at the top of RStudio, and select “commit”\nCheck “Staged” box for the files you have updated.\nType a message in “Commit message”, such as “init”.\nClick “Commit”.\n\nChanges have now been committed to your local repo.\n\n\nPush\nTo send the changes to GitHub hit “Push”. Go to your GitHub repo and confirm the updates have occurred.\n\n\nPull\nPull is the inverse of “Push”, if the repo has been updated on GitHub since your local repo was last updated, use “Pull” to “download” the updates on GitHub to your local repo.\n\n\nEND"
+    "text": "Quick introduction to connecting RStudio to GitHub. The session will be broken down into two components:\n\nInstall and set up\nBasics of using GitHub from RStudio\n\nHelpful resources:\n\nhappygitwithr webpage"
   },
   {
     "objectID": "index.html",
@@ -222,5 +222,12 @@
     "title": "Introduction to R",
     "section": "Set up",
     "text": "Set up\nBring your laptop. Stuff to install before the first session:\n\nR\nRStudio\n\nAlso install the tidyverse meta-package (collection of multiple packages), this can be done by running install.packages(\"tidyverse\")."
+  },
+  {
+    "objectID": "github.html#end",
+    "href": "github.html#end",
+    "title": "RStudio and GitHub",
+    "section": "END",
+    "text": "END"
   }
 ]

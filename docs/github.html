@@ -161,15 +161,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">1 SETUP</a>
   <ul class="collapse">
   <li><a href="#save-details-to-git" id="toc-save-details-to-git" class="nav-link" data-scroll-target="#save-details-to-git">Save details to Git</a></li>
-  <li><a href="#personal-access-token" id="toc-personal-access-token" class="nav-link" data-scroll-target="#personal-access-token">Personal access token</a></li>
+  <li><a href="#personal-access-token-pat" id="toc-personal-access-token-pat" class="nav-link" data-scroll-target="#personal-access-token-pat">Personal Access Token (PAT)</a></li>
   </ul></li>
-  <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">1 GITHUB AND RSTUDIO</a>
+  <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">2 GITHUB AND RSTUDIO</a>
   <ul class="collapse">
   <li><a href="#from-github" id="toc-from-github" class="nav-link" data-scroll-target="#from-github">From GitHub</a></li>
   <li><a href="#from-rstudio" id="toc-from-rstudio" class="nav-link" data-scroll-target="#from-rstudio">From RStudio</a></li>
   <li><a href="#commits" id="toc-commits" class="nav-link" data-scroll-target="#commits">Commits</a></li>
   <li><a href="#push" id="toc-push" class="nav-link" data-scroll-target="#push">Push</a></li>
   <li><a href="#pull" id="toc-pull" class="nav-link" data-scroll-target="#pull">Pull</a></li>
+  <li><a href="#reverting-changes" id="toc-reverting-changes" class="nav-link" data-scroll-target="#reverting-changes">Reverting changes</a></li>
   <li><a href="#end" id="toc-end" class="nav-link" data-scroll-target="#end">END</a></li>
   </ul></li>
   </ul>
@@ -199,9 +200,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level1">
 <h1>OVERVIEW</h1>
-<p>Quick introduction to connecting RStudio to GitHub. The session will be broken down into two main components:</p>
+<p>Quick introduction to connecting RStudio to GitHub. The session will be broken down into two components:</p>
 <ol type="1">
-<li><p>Install and setup</p></li>
+<li><p>Install and set up</p></li>
 <li><p>Basics of using GitHub from RStudio</p></li>
 </ol>
 <p>Helpful resources:</p>
@@ -220,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="save-details-to-git" class="level3">
 <h3 class="anchored" data-anchor-id="save-details-to-git">Save details to Git</h3>
-<p>Once you have the above sorted associate your details with Git.</p>
+<p>Once you have the above sorted associate your details with Git - NOTE: you must use the email address associated with your GitHub account here.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gitcreds)</span>
@@ -228,9 +229,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"my name"</span>, <span class="at">user.email =</span> <span class="st">"finn@gmail.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="personal-access-token" class="level3">
-<h3 class="anchored" data-anchor-id="personal-access-token">Personal access token</h3>
-<p>Set up credentials so we can access and alter GitHub repositories from <code>R</code>. Use the following code to take you to GitHub and generate a PAT.</p>
+<section id="personal-access-token-pat" class="level3">
+<h3 class="anchored" data-anchor-id="personal-access-token-pat">Personal Access Token (PAT)</h3>
+<p>Set up credentials so we can access and alter GitHub repositories from <code>R</code>. Use the following function to take you to GitHub and generate a PAT.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -243,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="github-and-rstudio" class="level1">
-<h1>1 GITHUB AND RSTUDIO</h1>
+<h1>2 GITHUB AND RSTUDIO</h1>
 <p>The easiest way to get started is to create a new repo on GitHub and then clone it via HTTPS.</p>
 <section id="from-github" class="level3">
 <h3 class="anchored" data-anchor-id="from-github">From GitHub</h3>
@@ -274,8 +275,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="pull">Pull</h3>
 <p>Pull is the inverse of “Push”, if the repo has been updated on GitHub since your local repo was last updated, use “Pull” to “download” the updates on GitHub to your local repo.</p>
 </section>
-<section id="end" class="level3">
-<h3 class="anchored" data-anchor-id="end">END</h3>
+<section id="reverting-changes" class="level3">
+<h3 class="anchored" data-anchor-id="reverting-changes">Reverting changes</h3>
+<p>A major reason to use Git is the ability to roll back changes to previous versions. How to do this will depend on whether the changes you want to discard have been staged, committed or pushed to GitHub.</p>
+<p>See <a href="https://intro2r.com/use_git.html#undo">HERE</a> for instructions on how to roll back a repo, for each scenario.</p>
+</section>
+<section id="end" class="level2">
+<h2 class="anchored" data-anchor-id="end">END</h2>
 
 
 </section>
