@@ -99,11 +99,8 @@ Pull is the inverse of "Push", if the repo has been updated on GitHub since your
 
 ### Reverting changes
 
-A major reason to use Git is the ability to roll back changes to previous versions.
-How to do this will depend on whether the changes you want to discard have been staged,
-committed or pushed to GitHub.
+A major reason to use Git is the ability to roll back changes to previous versions. How to do this will depend on whether the changes you want to discard have been staged, committed or pushed to GitHub.
 
-See [HERE](https://intro2r.com/use_git.html#undo) for instructions on how to roll
-back a repo, for each scenario.
+See [HERE](https://intro2r.com/use_git.html#undo) for instructions on how to roll back a repo, for each scenario.
 
 ## END
