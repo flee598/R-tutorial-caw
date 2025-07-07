@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-An introduction to R for Cawthron ECRs.
+An introduction to R for ECRs.
 
 -   Session 1: an introduction to R, RStudio and the `tidyverse`
 -   Session 2: an introduction to creating figures with `ggplot2`

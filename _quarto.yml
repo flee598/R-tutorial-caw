@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Cawthon ECR R"
+  title: "ECR R"
   navbar:
     left:
       - href: index.qmd
